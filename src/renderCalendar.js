@@ -41,7 +41,7 @@ export function renderCalendar(currentDate) {
     }
   }
   outputCalendar.innerHTML = outputCalendarHTML;
-  outputCalendar.insertAdjacentHTML('beforebegin', `
-    <div class="forButton"></div>
+  outputCalendar.insertAdjacentHTML('afterbegin', `
+    <td class="forButton"></td>
   `);
 }
