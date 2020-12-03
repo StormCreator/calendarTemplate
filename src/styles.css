@@ -15,7 +15,6 @@ table{
 .container{
   max-width: 1320px;
   margin: 0 auto;
-  border: 1px solid green;
 }
 
 #app {
@@ -40,8 +39,8 @@ thead{
 .forButton{
   width: 263px;
   border: none;
-  border-right: 1px solid rgb(192, 192, 192);
-  border-bottom: 1px solid rgb(192, 192, 192);
+  border-right: 1px solid #D7D7D7;
+  border-bottom: 1px solid #D7D7D7;
 }
 
 .outputCalendar {
@@ -60,7 +59,7 @@ thead{
 .outputDate {
   text-align: center;
   color: rgb(56, 56, 56);
-  font-size: 14;
+  font-size: 14px;
 }
 
 .outputItem {
@@ -70,7 +69,7 @@ thead{
   justify-content: center;
   max-width: 33px;
   padding: 8px 6px;
-  border: 1px solid rgb(192, 192, 192);
+  border: 1px solid #D7D7D7;
 }
 .outputItem:not(:first-of-type) {
   border-left: none;
@@ -83,8 +82,18 @@ thead{
 .team-body{
   display: flex;
   flex-wrap: wrap;
-  background: rgba(155, 153, 255, 0.1);
   margin-top: 34px;
+  position: relative;
+}
+
+.team-body::before{
+  height: 100%;
+  width: 3px;
+  position: absolute;
+  content: " ";
+  top: 0px;
+  left: 0px;
+  background-color: #9B99FF;
 }
 
 
@@ -94,14 +103,22 @@ thead{
 
 .team-row{
   width: 263px;
-  padding: 10px 10px 10px 19px;
-  border: 1px solid rgba(126, 126, 126, 0.3);
+  padding: 5px 10px 6px 19px;
+  border: 1px solid #D7D7D7;
   border-top: 0px;
+  font-size: 12px;
+  display: grid;
+  align-items: center;
+}
+
+.team-row--first{
+  background-color: rgba(155, 153, 255, 0.1);
 }
 
 .team-name{
   font-size: 12px;
   font-weight: 600;
+  line-height: 1.1;
 }
 
 
@@ -109,12 +126,23 @@ thead{
 
 .team-day{
   width: 33px;
-  border: 1px solid rgba(126, 126, 126, 0.3);
+  height: 33px;
+  border: 1px solid #D7D7D7;
   border-top: 0px;
   border-left: none;
 }
+
+.team-day--first{
+  background-color: rgba(155, 153, 255, 0.1);
+}
+.team-day--weekend{
+  background-color: rgba(107, 105, 172, 0.1);
+}
+
+
 .team-member{
   font-size: 12px;
   font-weight: 400;
+  line-height: 1.1;
 }
 

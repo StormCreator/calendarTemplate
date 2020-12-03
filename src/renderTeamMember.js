@@ -1,3 +1,5 @@
+import { dateFormatter } from "./utils"
+
 export function renderTeamMember(team, currentDate) {
     let daysInCurrentMonth = new Date(
         currentDate.getFullYear(),
@@ -18,7 +20,23 @@ export function renderTeamMember(team, currentDate) {
         `;
 
         for (let i = 1; i <= daysInCurrentMonth + 1; i++) {
-            outputString+=`<td class="team-day"></td>`;
+            
+            let chosenDate = new Date(
+                currentDate.getFullYear(),
+                currentDate.getMonth(),
+                i,
+              );
+            let [dayName, , date] = dateFormatter
+            .format(chosenDate)
+            .replace(",", "")
+            .split(" ");
+
+            if(dayName == "Sat" || dayName == "Sun"){
+                outputString+=`<td class="team-day team-day--weekend"></td>`;
+            }
+            else{
+                outputString+=`<td class="team-day"></td>`;
+            }
         }
 
         outputString+= `</tr>`;
