@@ -8,6 +8,11 @@ body {
   box-sizing: border-box;
 }
 
+a{
+  color:#fff;
+  text-decoration: none;
+}
+
 #app {
   width: 100vw;
   min-height: 100vh;
@@ -16,10 +21,18 @@ body {
   align-items: center;
 }
 
+.calendar-header{
+  display: flex;
+  align-items: center;
+}
+
 .chosenMonth {
-  font-size: 32px;
+  font-size: 14px;
+  font-weight: 600;
   margin-bottom: 5vh;
   margin-top: 5vh;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 .outputCalendar {
@@ -38,7 +51,7 @@ body {
 .outputDate {
   text-align: center;
   color: rgb(56, 56, 56);
-  font-size: 14;
+  font-size: 14px;
 }
 
 .outputItem {
@@ -55,4 +68,51 @@ body {
 
 .weekend {
   background: #f0f0f0;
+}
+
+i.fas{
+font-size: 14px;
+font-weight: 600;
+transition: all linear 0.2s;
+}
+
+.fas:hover{
+  color: #48BA46;
+}
+
+.add-btn{
+  width: 144px;
+  height: 40px;
+  border-radius: 7px;
+  background-color: #48BA46;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  transition: all linear 0.2s;
+}
+
+.add-btn::before,
+.add-btn::after{
+content:"";
+display: block;
+width: 13px;
+height: 1px;
+background:#fff;
+position: absolute;
+top: 50%;
+left: 16px;
+
+}
+
+.add-btn::before{
+  transform: rotate(90deg);
+}
+
+.add-btn:hover{
+  background-color: #59df57;
 }
