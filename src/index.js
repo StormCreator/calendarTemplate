@@ -13,3 +13,33 @@ const departmentTeams = [
   },
 ];
 */
+
+
+let preBtn=document.querySelector(".pre");
+let nextBtn=document.querySelector(".next");
+let currentMonth = currentDate.getMonth();
+
+
+preBtn.addEventListener("click", function(){
+  currentMonth=(currentDate.getMonth() - 1);;
+  let newDate = new Date(
+    currentDate.getFullYear(),
+    currentMonth,
+    currentDate.getDate()
+    );
+   
+ renderCalendar(newDate); 
+ currentDate=newDate;
+});
+
+nextBtn.addEventListener("click", function(){
+  currentMonth=(currentDate.getMonth() + 1);;
+  let newDate = new Date(
+    currentDate.getFullYear(),
+    currentMonth,
+    currentDate.getDate()
+    );
+   
+ renderCalendar(newDate); 
+ currentDate=newDate;
+});
