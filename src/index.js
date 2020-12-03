@@ -1,10 +1,6 @@
 import { renderCalendar } from "./renderCalendar";
+import { renderTeam } from "./renderTeam";
 
-let currentDate = new Date();
-
-renderCalendar(currentDate);
-
-/*
 const departmentTeams = [
   {
     name: "Frontend Team",
@@ -12,4 +8,12 @@ const departmentTeams = [
     members: [{ name: "FE_Team_User1" }],
   },
 ];
-*/
+
+let currentDate = new Date();
+
+renderCalendar(currentDate);
+renderTeam(currentDate, departmentTeams);
+
+
+
+

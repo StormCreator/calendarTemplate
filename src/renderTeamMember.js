@@ -1,4 +1,4 @@
-export function outputTeamMember(team, currentDate) {
+export function renderTeamMember(team, currentDate) {
     let daysInCurrentMonth = new Date(
         currentDate.getFullYear(),
         currentDate.getMonth() + 1,
@@ -6,16 +6,21 @@ export function outputTeamMember(team, currentDate) {
       ).getDate();
     let teamMembers = team.members;
 
-    let outputString;
+    let outputString = '';
 
     for(let i=0; i<teamMembers.length; i++){
-        outputString+= `<tr><td>${teamMembers[i].name}</td>`;
+        outputString+= `
+            <tr>
+                <td class = "team-row">
+                    <p class = "team-member">${teamMembers[i].name}</p>
+                </td>
+            
+        `;
 
-        for (let i = 1; i <= daysInCurrentMonth; i++) {
-            outputString+=`<td></td>`;
+        for (let i = 1; i <= daysInCurrentMonth + 1; i++) {
+            outputString+=`<td class="team-day"></td>`;
         }
 
-        outputString+=`<td>${teamMembers[i].summary}</td>`
         outputString+= `</tr>`;
     }
 

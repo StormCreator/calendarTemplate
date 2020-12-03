@@ -8,6 +8,16 @@ body {
   box-sizing: border-box;
 }
 
+table{
+  border-collapse: collapse;
+}
+
+.container{
+  max-width: 1320px;
+  margin: 0 auto;
+  border: 1px solid green;
+}
+
 #app {
   width: 100vw;
   min-height: 100vh;
@@ -20,6 +30,15 @@ body {
   font-size: 32px;
   margin-bottom: 5vh;
   margin-top: 5vh;
+  text-align: center;
+}
+
+thead{
+  display: flex;
+}
+
+.forButton{
+  width: 263px;
 }
 
 .outputCalendar {
@@ -45,9 +64,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 34px;
+  justify-content: center;
+  max-width: 33px;
   padding: 8px 6px;
   border: 1px solid rgb(192, 192, 192);
+  border-bottom: none;
 }
 .outputItem:not(:first-of-type) {
   border-left: none;
@@ -56,3 +77,40 @@ body {
 .weekend {
   background: #f0f0f0;
 }
+
+.team-body{
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(155, 153, 255, 0.1);
+  margin-top: 34px;
+}
+
+
+.team-body:first-child{
+  margin-top: 0;
+}
+
+.team-row{
+  width: 263px;
+  padding: 10px 10px 5px 19px;
+  border: 1px solid rgba(126, 126, 126, 0.3);
+}
+
+.team-name{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+
+
+.team-day{
+  width: 33px;
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  border-left: none;
+}
+.team-member{
+  font-size: 12px;
+  font-weight: 400;
+}
+

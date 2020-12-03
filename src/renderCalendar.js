@@ -26,10 +26,22 @@ export function renderCalendar(currentDate) {
       .replace(",", "")
       .split(" ");
     let isWeekend = dayName === "Sat" || dayName === "Sun";
-    outputCalendarHTML += `<td class="outputItem ${isWeekend ? "weekend" : ""}">
+    outputCalendarHTML += 
+      `<td class="outputItem ${isWeekend ? "weekend" : ""}">
         <span class="outputDay">${dayName.slice(0, -1)}</span> 
         <span class="outputDate">${date}</span>
-        </td>`;
+      </td>`
+    ;
+    if(i === daysInCurrentMonth){
+      outputCalendarHTML += `
+        <td class="outputItem">
+          <span class = "outputDay">Sum</span>
+        </td>
+      `;
+    }
   }
   outputCalendar.innerHTML = outputCalendarHTML;
+  outputCalendar.insertAdjacentHTML('beforebegin', `
+    <div class="forButton"></div>
+  `);
 }
