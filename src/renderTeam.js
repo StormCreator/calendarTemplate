@@ -28,6 +28,7 @@ export function renderTeam(currentDate, departmentTeams){
     
 
     const outputTeam = document.querySelector('.outputTeam');
+    outputTeam.innerHTML = '';
     let daysInCurrentMonth = new Date(
         currentDate.getFullYear(),
         currentDate.getMonth() + 1,
