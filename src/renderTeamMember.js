@@ -19,7 +19,7 @@ export function renderTeamMember(team, currentDate) {
             
         `;
 
-        for (let i = 1; i <= daysInCurrentMonth + 1; i++) {
+        for (let i = 1; i <= daysInCurrentMonth; i++) {
             
             let chosenDate = new Date(
                 currentDate.getFullYear(),
@@ -32,14 +32,18 @@ export function renderTeamMember(team, currentDate) {
             .split(" ");
 
             if(dayName == "Sat" || dayName == "Sun"){
-                outputString+=`<td class="team-day team-day--weekend"></td>`;
+                outputString+=`
+                <td class="team-day team-day--weekend"></td>
+                `;
             }
             else{
-                outputString+=`<td class="team-day"></td>`;
+                outputString+=`
+                <td class="team-day"></td>
+                `;
             }
         }
 
-        outputString+= `</tr>`;
+        outputString+= `<td class="member-summary">${teamMembers[i].summary}</td></tr>`;
     }
 
     return outputString;
