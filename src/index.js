@@ -1,5 +1,6 @@
 import { renderCalendar } from "./renderCalendar";
 import { renderTeam } from "./renderTeam";
+import { arrowListener } from "./arrowListener";
 
 const departmentTeams = [
   {
@@ -37,7 +38,7 @@ const outputCalendar = document.querySelector(".outputCalendar");
 
 renderCalendar(currentDate);
 renderTeam(currentDate, departmentTeams);
-
+arrowListener();
 
 
 preBtn.addEventListener("click", function(){
@@ -48,7 +49,8 @@ preBtn.addEventListener("click", function(){
     currentDate.getDate()
     );
   renderCalendar(newDate);
-  renderTeam(newDate, departmentTeams);  
+  renderTeam(newDate, departmentTeams);
+  arrowListener();  
   currentDate=newDate;
 });
 
@@ -60,24 +62,10 @@ nextBtn.addEventListener("click", () => {
     currentDate.getDate()
   );
   renderCalendar(newDate);
-  renderTeam(newDate, departmentTeams); 
+  renderTeam(newDate, departmentTeams);
+  arrowListener();   
   currentDate = newDate;
 });
-
-let teamArrows = document.querySelectorAll('.team-arrow');
-teamArrows.forEach(arrow => {
-  arrow.addEventListener('click', () => {
-    console.log('dada');
-    if(arrow.parentNode.parentElement.classList.contains('close')){
-      arrow.parentNode.parentElement.classList.remove('close');
-    }else{
-      arrow.parentNode.parentElement.classList.add('close');
-    }
-  });
-});
-
-
-
 
 let addVacation = document.createElement('tr');
   addVacation.classList.add('add-vacation');
