@@ -313,14 +313,14 @@ i.fas{
 
 .add-btn::before,
 .add-btn::after{
-content:"";
-display: block;
-width: 13px;
-height: 1px;
-background:#fff;
-position: absolute;
-top: 50%;
-left: 16px;
+  content:"";
+  display: block;
+  width: 13px;
+  height: 1px;
+  background:#fff;
+  position: absolute;
+  top: 50%;
+  left: 16px;
 
 }
 
