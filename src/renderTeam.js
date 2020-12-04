@@ -24,7 +24,8 @@ export function renderTeam(currentDate, departmentTeams){
     <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M11 6.00012L6 1.00012L1 6.00012" stroke="black"/>
     </svg>
-    `
+    `;
+    
 
     const outputTeam = document.querySelector('.outputTeam');
     let daysInCurrentMonth = new Date(
@@ -39,6 +40,7 @@ export function renderTeam(currentDate, departmentTeams){
         let colorTheme = departmentTeams[i].colorTheme;
         let teamBody = document.createElement('tr');
         teamBody.classList.add('team-body');
+        teamBody.classList.add('close');
         teamBody.classList.add(`team-body--${colorTheme}-border`);
         teamBody.innerHTML = `
             <td class = "team-row team-row--${colorTheme} team-row--first">

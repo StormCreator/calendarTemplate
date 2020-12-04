@@ -15,6 +15,7 @@ table{
 .container{
   max-width: 1320px;
   margin: 0 auto;
+  border: 1px solid green;
 }
 
 #app {
@@ -252,3 +253,15 @@ thead{
   line-height: 1.1;
 }
 
+.close {
+  max-height: 34px;
+  overflow: hidden;
+}
+
+.team-row .team-arrow{
+  transform: rotate(180deg);
+}
+
+.close .team-row .team-arrow{
+  transform: rotate(360deg);
+}
