@@ -143,6 +143,10 @@ thead{
   border-left: none;
 }
 
+.outputItem:first-child{
+  border-left: 0px;
+}
+
 .weekend {
   background: #f0f0f0;
 }
@@ -268,7 +272,7 @@ thead{
 }
 
 .close {
-  max-height: 34px;
+  max-height: 33px;
   overflow: hidden;
 }
 
