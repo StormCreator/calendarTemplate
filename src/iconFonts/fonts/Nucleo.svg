@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="Nucleo" horiz-adv-x="288">
+    <font-face font-family="Nucleo"
+      units-per-em="256" ascent="256"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="Arrow-2"
+      unicode="&#xEA01;"
+      horiz-adv-x="288" d="M20.672 139.328A16 16 0 0 1 20.672 116.672L122.496 14.848A16 16 0 1 1 145.152 37.504L54.624 128L145.152 218.496A16 16 0 1 1 122.496 241.152L20.672 139.328zM288 144H32V112H288V144z" />
+    <glyph glyph-name="Arrow-3"
+      unicode="&#xEA02;"
+      horiz-adv-x="288" d="M267.328 116.672A16 16 0 0 1 267.328 139.328L165.504 241.152A16 16 0 1 1 142.848 218.496L233.376 128L142.848 37.504A16 16 0 1 1 165.504 14.848L267.3280000000001 116.672zM0 112H256V144H0V112z" />
+    <glyph glyph-name="chevron-down-solid"
+      unicode="&#xEA03;"
+      horiz-adv-x="224" d="M103.5145 65.262L6.343 162.434C1.6565 167.1205 1.6565 174.7185 6.343 179.4045L17.6765 190.738C22.355 195.4165 29.9375 195.4255 34.627 190.758L112 113.7475L189.3725 190.758C194.062 195.4255 201.6445 195.4165 206.323 190.738L217.6565 179.4045C222.343 174.718 222.343 167.12 217.6565 162.434L120.4855 65.262C115.799 60.576 108.201 60.576 103.5145 65.262z" />
+  </font>
+</defs>
+</svg>

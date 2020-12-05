@@ -1,4 +1,7 @@
-import { Calendar } from "./components";
+// import { Calendar } from "./components";
+// import { Table } from "./components";
+import { Calendar } from "./components/calendar";
+
 
 const departmentTeams = {
   teams: [
@@ -20,6 +23,13 @@ const departmentTeams = {
             { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
           ],
         },
+        {
+          name: "FE_Team_User1",
+          vacations: [
+            { startDate: "20.02.2020", endDate: "22.02.2020", type: "UnPaid" },
+            { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
+          ],
+        },
       ],
     },
     {
@@ -27,14 +37,14 @@ const departmentTeams = {
       percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
       members: [
         {
-          name: "FE_Team_User1",
+          name: "BA_Team_User1",
           vacations: [
             { startDate: "15.02.2020", endDate: "22.02.2020", type: "UnPaid" },
             { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
           ],
         },
         {
-          name: "FE_Team_User1",
+          name: "BA_Team_User1",
           vacations: [
             { startDate: "20.02.2020", endDate: "22.02.2020", type: "UnPaid" },
             { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
@@ -45,17 +55,23 @@ const departmentTeams = {
   ],
 };
 
-const calendar = new Calendar("#app");
 
-window.calendar = calendar;
 
-console.log(calendar);
+
+const calendar = new Calendar(departmentTeams);
 calendar.render();
 
 
+// const calendar = new Calendar("#app","div","month-picker");
+
+// const table = new Table("#app","table","table",departmentTeams);
+
+// window.calendar = calendar;
+
+// setTimeout(() => calendar.render(), 0);
+// setTimeout(() => table.render(), 0);
 
 
-// // setTimeout(() => calendar.render(), 4000);
 
 // fetch("https://jsonplaceholder.typicode.com/posts/1", {
 //   method: "PUT",

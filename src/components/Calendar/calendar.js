@@ -1,28 +1,18 @@
-import { dateFormatter } from "../../utils";
-import { Component } from "..";
+import { Table } from "../table";
+import { MonthPicker } from "../monthPicker";
 
-export class Calendar extends Component {
-  constructor(parentSelector) {
-    super(parentSelector);
-    this.currentDate = new Date();
-    this.label = new Component(this.component, "p");
-  }
 
-  render() {
-    super.render();
-    this.createCurrentLabel();
-  }
 
-  createCurrentLabel() {
-    this.component.prepend(this.label.component);
-    this.updateCurrentLabel(this.currentDate);
+export class Calendar {
+    constructor(departmentTeams) {
+        this.monthPicker = new MonthPicker("#app","div","month-picker");
+        this.table = new Table("#app","table","table",departmentTeams);
+    }
+    render() {
+        console.log('s')
+        setTimeout(() => this.monthPicker.render(), 0);
+        setTimeout(() => this.table.render(), 0);
+    }
+  
   }
-
-  updateCurrentLabel(date) {
-    const { component: label } = this.label;
-    label.textContent = dateFormatter
-      .format(new Date(date))
-      .replace(",", "")
-      .split(" ")[1];
-  }
-}
+  
