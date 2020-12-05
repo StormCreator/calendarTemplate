@@ -1,4 +1,4 @@
-import { Component } from "../../..";
+import { Component } from "../component";
 
 export class CalendarHead extends Component {
     constructor(parentSelector,tagName,className,departmentTeams) {

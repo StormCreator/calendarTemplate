@@ -1,5 +1,5 @@
-import { Component } from "../../..";
-import { Member } from "../calendarBody/member/member";
+import { Component } from "../component";
+import { Member } from "../member";
 
 export class CalendarBody extends Component {
     constructor(parentSelector,tagName,className,department) {

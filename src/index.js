@@ -1,6 +1,6 @@
 // import { Calendar } from "./components";
 // import { Table } from "./components";
-import { Main } from "./components";
+import { Calendar } from "./components/calendar";
 
 
 const departmentTeams = {
@@ -56,11 +56,12 @@ const departmentTeams = {
 };
 
 
-const main = new Main(departmentTeams);
-console.log(main)
-main.render();
+// const calendar = new Calendar(departmentTeams);
 
-// const calendar = new Calendar("#app","div","month-picker");
+
+
+const calendar = new Calendar("#app","div","month-picker");
+calendar.render();
 // const table = new Table("#app","table","table",departmentTeams);
 
 // window.calendar = calendar;

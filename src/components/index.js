@@ -1,6 +1,6 @@
 export { Component } from "./component";
-export { Main } from "./main";
-export { Calendar } from "./Calendar";
-export { Table } from "./Calendar";
-export { CalendarHead } from "./Calendar";
-export { CalendarBody } from "./Calendar";
+export { Calendar } from "./calendar";
+export { MonthPicker } from "./monthPicker";
+export { Table } from "./table";
+export { CalendarHead } from "./calendarHead";
+export { CalendarBody } from "./calendarBody";

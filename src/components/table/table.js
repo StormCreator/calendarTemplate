@@ -1,6 +1,6 @@
-import { Component } from "../..";
-import { CalendarHead } from "..";
-import { CalendarBody } from "..";
+import { Component } from "../component";
+import { CalendarHead } from "../calendarHead";
+import { CalendarBody } from "../calendarBody";
 
 export class Table extends Component {
     constructor(parentSelector,tagName,className,departmentTeams) {
