@@ -1,4 +1,4 @@
-// import { dateFormatter } from "../../utils";
+import { dateFormatter } from "../../utils";
 import { Component } from "../component";
 
 export class MonthPicker extends Component {

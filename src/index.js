@@ -56,12 +56,14 @@ const departmentTeams = {
 };
 
 
-// const calendar = new Calendar(departmentTeams);
 
 
-
-const calendar = new Calendar("#app","div","month-picker");
+const calendar = new Calendar(departmentTeams);
 calendar.render();
+
+
+// const calendar = new Calendar("#app","div","month-picker");
+
 // const table = new Table("#app","table","table",departmentTeams);
 
 // window.calendar = calendar;
