@@ -1,4 +1,7 @@
 import { Calendar } from "./components";
+import { Table } from "./components";
+// import { Main } from "./components";
+
 
 const departmentTeams = {
   teams: [
@@ -45,17 +48,20 @@ const departmentTeams = {
   ],
 };
 
-const calendar = new Calendar("#app");
+// console.log(main)
+// const main = new Main();
 
-window.calendar = calendar;
+// main.render();
 
-console.log(calendar);
-calendar.render();
+const calendar = new Calendar("#app","div","month-picker");
+const table = new Table("#app","table","table",departmentTeams);
+
+// window.calendar = calendar;
+
+setTimeout(() => calendar.render(), 0);
+setTimeout(() => table.render(), 0);
 
 
-
-
-// // setTimeout(() => calendar.render(), 4000);
 
 // fetch("https://jsonplaceholder.typicode.com/posts/1", {
 //   method: "PUT",

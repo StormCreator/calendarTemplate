@@ -56,3 +56,17 @@ body {
 .weekend {
   background: #f0f0f0;
 }
+
+/* ..... */
+.month-picker {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+.arrowNext, .arrowPrev {
+  padding: 15px;
+}
+.arrowNext:hover, .arrowPrev:hover {
+  cursor: pointer;
+  color: red;
+}
