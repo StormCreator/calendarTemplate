@@ -3,5 +3,3 @@ export const dateFormatter = new Intl.DateTimeFormat("en", {
   weekday: "short",
   day: "numeric",
 });
-
-export default { dateFormatter };
