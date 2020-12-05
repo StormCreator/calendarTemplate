@@ -8,20 +8,6 @@ body {
   box-sizing: border-box;
 }
 
-table{
-  border-collapse: collapse;
-}
-
-.container{
-  max-width: 1320px;
-  margin: 0 auto;
-}
-
-a{
-  color:#fff;
-  text-decoration: none;
-}
-
 #app {
   width: 100vw;
   min-height: 100vh;
@@ -30,88 +16,14 @@ a{
   align-items: center;
 }
 
-.calendar-header{
-  margin-top: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .chosenMonth {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 32px;
   margin-bottom: 5vh;
   margin-top: 5vh;
-  margin-right: 50px;
-  margin-left: 50px;
-  text-align: center;
-}
-
-thead{
-  display: flex;
-}
-
-.add-vacation{
-  width: 263px;
-  border: none;
-  border-right: 1px solid #D7D7D7;
 }
 
 .outputCalendar {
   display: flex;
-}
-
-.member-summary{
-  width: 33px;
-  height: 33px;
-  border: 1px solid #D7D7D7;
-  border-top: 0px;
-  border-left: 0px;
-  background-color: #F0F0F0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.team-amount{
-  display: flex;
-  align-items: center;
-  justify-self: center;
-}
-
-.team-amount span{
-  margin-right: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1px;
-}
-
-.team-percent{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #9B99FF;
-  border-radius: 2px;
-  color: #fff;
-  width: 100%;
-  max-width: 30px;
-}
-
-.team-percent--lightblue{
-  background: #7AAFFF;
-}
-
-.team-percent--red{
-  background: #FF9999;
-}
-.team-percent--orange{
-  background: #FFA768;
-}
-
-.team-arrow{
-  justify-self: center;
-  cursor: pointer;
 }
 
 .outputDay {
@@ -126,208 +38,21 @@ thead{
 .outputDate {
   text-align: center;
   color: rgb(56, 56, 56);
-  font-size: 14px;
+  font-size: 14;
 }
 
 .outputItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  max-width: 33px;
+  max-width: 34px;
   padding: 8px 6px;
-  border: 1px solid #D7D7D7;
-  border-bottom: 0px;
+  border: 1px solid rgb(192, 192, 192);
 }
 .outputItem:not(:first-of-type) {
   border-left: none;
 }
 
-.outputItem:first-child{
-  border-left: 0px;
-}
-
 .weekend {
   background: #f0f0f0;
-}
-
-.team-body{
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 34px;
-  position: relative;
-}
-
-.team-body::before{
-  height: 100%;
-  width: 3px;
-  position: absolute;
-  content: " ";
-  top: 0px;
-  left: 0px;
-  background-color: #9B99FF;
-}
-
-.team-body--blue-border::before{
-  background-color: #9B99FF;
-}
-
-.team-body--lightblue-border::before{
-  background-color: #7AAFFF;
-}
-
-.team-body--orange-border::before{
-  background-color: #FFA768;
-}
-
-.team-body--red-border::before{
-  background-color:#FF9999;
-}
-
-
-
-.team-body:first-child{
-  margin-top: 0;
-}
-
-.team-row{
-  width: 263px;
-  padding: 6px 10px 6px 19px;
-  border: 1px solid #D7D7D7;
-  border-top: 0px;
-  font-size: 12px;
-  color: #949494;
-  display: flex;
-  align-items: center;
-}
-
-.team-row--first{
-  display: grid;
-  grid-template-columns: auto 30px 30px 30px;
-  grid-column-gap: 8px;
-  align-items: center;
-  background-color: rgba(155, 153, 255, 0.1);
-  border-top: 1px solid #D7D7D7;
-}
-
-.team-row--lightblue{
-  background-color: rgba(122, 175, 255, 0.1);
-}
-
-.team-row--red{
-  background: rgba(255, 153, 153, 0.1);
-}
-
-.team-row--orange{
-  background: rgba(255, 167, 104, 0.1);
-}
-
-.team-name{
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.1;
-}
-
-
-
-
-
-.team-day{
-  width: 33px;
-  height: 33px;
-  border: 1px solid #D7D7D7;
-  border-top: 0px;
-  border-left: none;
-}
-
-.team-day--blue{
-  background-color: rgba(155, 153, 255, 0.1);
-}
-
-.team-day--lightblue{
-  background: rgba(122, 175, 255, 0.1);
-}
-
-.team-day--red{
-  background: rgba(255, 153, 153, 0.1);
-}
-
-.team-day--orange{
-  background: rgba(255, 167, 104, 0.1);
-  
-}
-
-.team-day--first{
-  border-top: 1px solid #D7D7D7;
-}
-.team-day--weekend{
-  background-color: rgba(107, 105, 172, 0.1);
-}
-
-
-.team-member{
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.1;
-}
-
-.close {
-  max-height: 33px;
-  overflow: hidden;
-}
-
-.team-row .team-arrow{
-  transform: rotate(180deg);
-}
-
-.close .team-row .team-arrow{
-  transform: rotate(360deg);
-}
-
-i.fas{
-  font-size: 14px;
-  font-weight: 600;
-  transition: all linear 0.2s;
-  cursor: pointer;
-}
-
-.fas:hover{
-  color: #48BA46;
-}
-
-.add-btn{
-  width: 144px;
-  height: 40px;
-  border-radius: 7px;
-  background-color: #48BA46;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.5;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 20px;
-  transition: all linear 0.2s;
-}
-
-.add-btn::before,
-.add-btn::after{
-  content:"";
-  display: block;
-  width: 13px;
-  height: 1px;
-  background:#fff;
-  position: absolute;
-  top: 50%;
-  left: 16px;
-
-}
-
-.add-btn::before{
-  transform: rotate(90deg);
-}
-
-.add-btn:hover{
-  background-color: #59df57;
 }
