@@ -15,17 +15,14 @@ export class Table extends Component {
          this.renderBody()
       }
     renderBody(){
-        let arr = [];
+        // let arr = [];
         for(let i = 0; i<this.departmentTeams.teams.length; i++){
-            this.calendarBody = new CalendarBody(this.component, "tbody", "body",this.departmentTeams);
-            arr.push(this.calendarBody);
+            this.calendarBody = new CalendarBody(this.component, "tbody", "body",this.departmentTeams.teams[i]);
+            // arr.push(this.calendarBody);
             this.calendarBody.render();
         }
-        this.calendarBody.h();
     }
-    // h(arr){
-    //     console.log(arr[0].departmentTeams)
-    // }
+
 
 }
 
