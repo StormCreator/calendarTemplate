@@ -11,11 +11,7 @@ export class Component {
 
   render() {
     this.parent.append(this.component);
-    return this.component;
+    // return this.component;
   }
-  hide() {
-    console.log('у')
-  }
-  // hide
-  // open
+
 }

@@ -1,6 +1,6 @@
-import { Calendar } from "./components";
-import { Table } from "./components";
-// import { Main } from "./components";
+// import { Calendar } from "./components";
+// import { Table } from "./components";
+import { Main } from "./components";
 
 
 const departmentTeams = {
@@ -48,18 +48,18 @@ const departmentTeams = {
   ],
 };
 
-// console.log(main)
-// const main = new Main();
 
-// main.render();
+const main = new Main(departmentTeams);
+console.log(main)
+main.render();
 
-const calendar = new Calendar("#app","div","month-picker");
-const table = new Table("#app","table","table",departmentTeams);
+// const calendar = new Calendar("#app","div","month-picker");
+// const table = new Table("#app","table","table",departmentTeams);
 
 // window.calendar = calendar;
 
-setTimeout(() => calendar.render(), 0);
-setTimeout(() => table.render(), 0);
+// setTimeout(() => calendar.render(), 0);
+// setTimeout(() => table.render(), 0);
 
 
 

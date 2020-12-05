@@ -11,7 +11,7 @@ export class CalendarBody extends Component {
     render() {
         super.render();
         this.component.insertAdjacentElement('beforeend', this.team.component);
-        this.hide();
+        // this.hide();
         
     }
     h(){
