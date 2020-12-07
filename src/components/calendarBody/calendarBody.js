@@ -20,9 +20,9 @@ export class CalendarBody extends Component {
     }
 
     renderMembers(){
-        console.log(this.department.members)
+
         for(let i=0; i<this.department.members.length; i++){
-            this.member = new Member(this.component, "td", "member");
+            this.member = new Member(this.component, "td", "member",this.department.members[i]);
             this.component.insertAdjacentElement('beforeend', this.member.component);
         }
 

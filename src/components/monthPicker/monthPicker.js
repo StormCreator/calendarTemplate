@@ -1,5 +1,6 @@
 import { dateFormatter } from "../../utils";
 import { Component } from "../component";
+import { Table } from "../table";
 
 export class MonthPicker extends Component {
   constructor(parentSelector,tagName,className) {
@@ -8,12 +9,14 @@ export class MonthPicker extends Component {
     this.label = new Component(this.component, "h1", "month");
     this.arrowPrev = new Component(this.component, "i", "arrowPrev icon icon-Arrow-2");
     this.arrowNext = new Component(this.component, "i", "arrowNext icon icon-Arrow-3");
+    this.table = new Table("#app","table","table",this.currentDate);
   }
 
   render() {
     super.render();
     this.createCurrentLabel();
     this.renderArrow();
+    this.table.render()
   }
 
   createCurrentLabel() {
@@ -40,9 +43,11 @@ export class MonthPicker extends Component {
   nextMonth() {
     this.currentDate = new Date(this.currentDate.getFullYear(),this.currentDate.getMonth()+1,1);
     this.updateCurrentLabel(this.currentDate)
+    this.table.getDate(this.currentDate)
   }
   prevMonth() {
     this.currentDate = new Date(this.currentDate.getFullYear(),this.currentDate.getMonth()-1,1);
     this.updateCurrentLabel(this.currentDate)
+    this.table.getDate(this.currentDate)
   }
 }

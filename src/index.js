@@ -4,7 +4,7 @@ import { Calendar } from "./components/calendar";
 import { departmentTeams } from "./data";
 
 
-const calendar = new Calendar(departmentTeams);
+const calendar = new Calendar();
 calendar.render();
 
 

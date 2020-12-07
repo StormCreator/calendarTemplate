@@ -11,7 +11,21 @@ export class Component {
 
   render() {
     this.parent.append(this.component);
-    // return this.component;
+  }
+  hideDay(different,date){
+    let arr = document.querySelectorAll('.day')
+    date.setDate(1);
+    for (let i=0; i<31; i++) {
+      arr[i].style.display = 'inline';
+      arr[i].setAttribute('data-date', `${date}`);
+    }
+    if(different){
+      for (let i=1; i<=different; i++) {
+      arr[(arr.length)-i].style.display = 'none';
+    }
+    }
+  
+
   }
 
 }
