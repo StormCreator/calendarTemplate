@@ -1,14 +1,21 @@
 import { Component } from "../component";
 import { departmentTeams } from '../../data';
+import { Day } from "../Day/";
 
 
 export class Member extends Component {
-    constructor(parentSelector, tagName, className, member) {
+    constructor(parentSelector, tagName, className, member, currentDate) {
         super(parentSelector, tagName, className, );
         this.member = member;
         this.name = member.name;
         this.memberName = new Component(this.component, "td", "memberName");
-        this.sumName = new Component(this.component, "td", "sumName");
+        this.currentDate = currentDate;
+        this.daysInCurrentMonth = new Date(
+            this.currentDate.getFullYear(),
+            this.currentDate.getMonth() + 1,
+            0
+        ).getDate();
+        // this.sumName = new Component(this.component, "td", "sumName");
     }
 
     render() {
@@ -16,22 +23,25 @@ export class Member extends Component {
         this.memberName.component.textContent = this.name;
         this.renderMemberName()
         this.renderDate()
-        this.renderSumname()
     }
 
     renderMemberName() {
         this.component.insertAdjacentElement('afterbegin', this.memberName.component);
+        this.memberName.addClass('teamHead-name');
 
 
     }
-    renderSumname() {
-        this.component.insertAdjacentElement('beforeend', this.sumName.component);
-        this.sumName.component.textContent = 'Sum';
-    }
+
     renderDate() {
-        for (let i = 1; i <= 31; i++) {
-            this.Day = new Component(this.component, "td", "day");
+        for (let i = 1; i <= this.daysInCurrentMonth; i++) {
+            this.Day = new Component(this.component, "td", "outputItem");
+            this.Day.addClass('member-day');
             this.Day.render();
+            if(i === this.daysInCurrentMonth){
+                let summary = new Day(this.component, "td", "outputItem", "Sum");
+                summary.component.classList.add("member-day");
+                summary.render();
+            }
         }
     }
 }

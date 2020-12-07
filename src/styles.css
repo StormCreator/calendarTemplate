@@ -27,7 +27,6 @@ body {
 }
 .calendar-head {
   display: flex;
-  max-width: 1320px;
   margin: 20px auto;
 }
 .add-vacation{
@@ -95,12 +94,18 @@ body {
     color: red;
 }
 
-.table,
-td,
-tr {
-    border: 1px solid black;
+.table{
+    max-width: 1320px;
+    margin: 0 auto;
 }
 
+tbody{
+    width: 100%;
+}
+
+.team-head{
+    width: 100%;
+}
 .day,
 .sumName {
     width: 35px;
@@ -109,4 +114,15 @@ tr {
 
 .teamHead-name {
     display: flex;
+    width: 263px;
+    border: 1px solid rgb(192, 192, 192);
+}
+
+.member{
+    display: flex;
+}
+
+.member-day{
+    width: 35px;
+    height: 35px;
 }

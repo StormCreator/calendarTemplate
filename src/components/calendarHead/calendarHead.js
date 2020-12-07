@@ -92,7 +92,6 @@ export class CalendarHead extends Component {
                 this.showDays.push(this.hideDays[0]);
                 this.showDays[this.showDays.length-1].showComponent();
                 this.hideDays.shift();
-
             }
             this.updateDayName();
         }
