@@ -1,29 +1,16 @@
 import { Component } from "../component";
-import { CalendarHead } from "../calendarHead";
-import { CalendarBody } from "../calendarBody";
 
 export class Table extends Component {
-    constructor(parentSelector,tagName,className,departmentTeams) {
+    constructor(parentSelector,tagName,className) {
         super(parentSelector,tagName,className,);
-        this.departmentTeams = departmentTeams;
-        this.calendarHead = new CalendarHead(this.component, "thead", "months",this.departmentTeams);
-        
     }  
     render() {
         super.render();
-         this.component.prepend(this.calendarHead.component);
-         this.renderBody()
-      }
-    renderBody(){
-        // let arr = [];
-        for(let i = 0; i<this.departmentTeams.teams.length; i++){
-            this.calendarBody = new CalendarBody(this.component, "tbody", "body",this.departmentTeams.teams[i]);
-            // arr.push(this.calendarBody);
-            this.calendarBody.render();
-        }
     }
 
-
+    setTableHead(tableHead){
+        this.tableHead = tableHead;
+    }
 }
 
 
