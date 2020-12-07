@@ -2,10 +2,11 @@ import { dateFormatter } from "../../utils";
 import { Component } from "../component";
 
 export class MonthPicker extends Component {
-  constructor(parentSelector,tagName,className, calendarHead) {
+  constructor(parentSelector,tagName,className, calendarHead,arrBody) {
     super(parentSelector,tagName,className);
     this.currentDate = new Date();
     this.calendarHead = calendarHead;
+    this.arrBody = arrBody;
     this.label = new Component(this.component, "h1", "month");
     this.arrowPrev = new Component(this.component, "i", "arrowPrev icon icon-Arrow-2");
     this.arrowNext = new Component(this.component, "i", "arrowNext icon icon-Arrow-3");
@@ -57,5 +58,10 @@ export class MonthPicker extends Component {
     }
     this.updateCurrentLabel(this.currentDate)
     this.calendarHead.updateDays(this.currentDate);
+    // this.calendarBody.updateDays(this.currentDate);
+    for(let i= 0; i<this.arrBody.length; i++){
+      this.arrBody[i].updateDays(this.currentDate);
+      this.arrBody[i].updateDaysMembers(this.currentDate)
+    }
   }
 }

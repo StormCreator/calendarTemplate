@@ -1,7 +1,7 @@
 import { Component } from "../component";
 
 export class Day extends Component{
-    constructor(parentSelector, tagName, className, dayName, dayNumber = " "){
+    constructor(parentSelector, tagName, className, dayName = " ", dayNumber = " "){
         super(parentSelector, tagName, className);
         this.dayName = dayName;
         this.dayNumber = dayNumber;
@@ -13,8 +13,9 @@ export class Day extends Component{
     render(){
         super.render();
         this.createCurrentLabel();
-        this.setLabelName(this.dayName);
-        this.setLabelNumber(this.dayNumber);
+        this.checkHeadClass();
+        // this.setLabelName(this.dayName);
+        // this.setLabelNumber(this.dayNumber);
     }
 
     createCurrentLabel() {
@@ -26,7 +27,10 @@ export class Day extends Component{
         if(this.component.classList.contains('weekend')){
             this.component.classList.remove('weekend');
         }
-        this.labelName.component.textContent = dayName;
+        if(this.component.classList.contains("headerDay")){
+           this.labelName.component.textContent = dayName; 
+        }
+        
         this.dayName = dayName;
         this.isWeekend();
     }
@@ -48,6 +52,13 @@ export class Day extends Component{
             this.component.classList.add('weekend');
         }
     }
-    
 
+    checkHeadClass(){
+        if(this.component.classList.contains("headerDay")){
+            this.setLabelName(this.dayName);
+            this.setLabelNumber(this.dayNumber);
+        }
+    }
+
+   
 }

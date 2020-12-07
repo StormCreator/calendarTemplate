@@ -27,7 +27,7 @@ export class Component {
   }
 
   appendAfter(element){
-    this.component.insertAdjacentElement("afterbegin", component);
+    this.component.insertAdjacentElement("afterbegin", element);
   }
 
   prepend(element){
