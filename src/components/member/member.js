@@ -73,19 +73,22 @@ export class Member extends Component {
     
     updateDays(currentDate){
         this.vacations();
-        this.inOneMonth ()
-        this.setCurrentDate(currentDate);
-        this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
 
+        this.setCurrentDate(currentDate);
+        
+        this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
+        this.inOneMonth ()
         if( this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length)
         {
             let days = this.fixedDayCount % this.daysInCurrentMonth - this.hideDays.length;
             for(let i = 0; i < days; i++){
                 this.showDays[this.showDays.length-1].hideComponent();
                 this.hideDays.unshift(this.showDays[this.showDays.length-1]);
+                this.inOneMonth ()
                 this.showDays.pop();            
             }
             this.updateDayName();
+            
 
         }
         else{
@@ -93,12 +96,14 @@ export class Member extends Component {
             for(let i = 0; i < days; i++){
                 this.showDays.push(this.hideDays[0]);
                 this.showDays[this.showDays.length-1].showComponent();
+                this.inOneMonth ()
                 this.hideDays.shift();         
             }
             this.updateDayName();
 
+
         }
-        
+
     }
 
     renderDate() {
