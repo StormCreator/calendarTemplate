@@ -1,3 +1,5 @@
+import { dateFormatter } from "../../utils";
+
 export class Component {
   constructor(parentSelector, tagName = "div", className = '') {
     if (typeof parentSelector === "string") {
@@ -48,5 +50,41 @@ toggleComponent(){
     console.log(this.parent);
   }
   
+  updateData(fixedDayCount, daysInCurrentMonth, hideDays, showDays){
+    if( fixedDayCount % daysInCurrentMonth > hideDays.length)
+    {
+        let days = fixedDayCount % daysInCurrentMonth - hideDays.length;
+        for(let i = 0; i < days; i++){
+            this.showDays[showDays.length-1].hideComponent();
+            this.hideDays.unshift(showDays[showDays.length-1]);
+            this.showDays.pop();
+        }
+    }
+    else{
+        let days = hideDays.length - fixedDayCount % daysInCurrentMonth;
+        for(let i = 0; i < days; i++){
+            showDays.push(hideDays[0]);
+            showDays[showDays.length-1].showComponent();
+            hideDays.shift();
+        }
+    }
+  }
+
+  updateDayName(currentDate, showDays){
+    console.log(showDays.length);
+    for(let i = 0; i < showDays.length; i++){
+      const chosenDate = new Date(
+          currentDate.getFullYear(),
+          currentDate.getMonth(),
+          i+1,
+      );
+      console.log(chosenDate);
+      const [dayName] = dateFormatter
+      .format(chosenDate)
+      .replace(",", "")
+      .split(" ");
+      showDays[i].setLabelName(dayName.substr(0, 2));
+    }  
+  }
 
 }

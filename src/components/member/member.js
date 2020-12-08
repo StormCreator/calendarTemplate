@@ -1,5 +1,4 @@
 import { Component } from "../component";
-import { departmentTeams } from '../../data';
 import { Day } from "../Day/";
 import { dateFormatter } from "../../utils/";
 
@@ -28,19 +27,13 @@ export class Member extends Component {
         super.render();
         this.memberName.component.textContent = this.name;
         this.vacations();
-        this.renderMemberName()
-
-        this.renderDate()
-
-        // this.updateDays(this.currentDate)
-        // this.renderDays()
+        this.renderMemberName();
+        this.renderDate();
     }
 
     renderMemberName() {
         this.component.insertAdjacentElement('afterbegin', this.memberName.component);
         this.memberName.addClass('teamHead-name');
-
-
     }
     setCurrentDate(date){
         this.currentDate = date;
@@ -53,60 +46,17 @@ export class Member extends Component {
             0
         ).getDate();
     }
-
-
-    updateDayName(){
-        for(let i = 0; i < this.showDays.length; i++){
-            const chosenDate = new Date(
-                this.currentDate.getFullYear(),
-                this.currentDate.getMonth(),
-                i+1,
-            );
-            const [dayName] = dateFormatter
-            .format(chosenDate)
-            .replace(",", "")
-            .split(" ");
-            this.showDays[i].setLabelName(dayName.substr(0, 2));
-        }   
-    }
     
     updateDays(currentDate){
         this.vacations();
-
         this.setCurrentDate(currentDate);
-        
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
         this.inOneMonth ()
-        if( this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length)
-        {
-            let days = this.fixedDayCount % this.daysInCurrentMonth - this.hideDays.length;
-            for(let i = 0; i < days; i++){
-                this.showDays[this.showDays.length-1].hideComponent();
-                this.hideDays.unshift(this.showDays[this.showDays.length-1]);
-                this.inOneMonth ()
-                this.showDays.pop();            
-            }
-            this.updateDayName();
-            
-
-        }
-        else{
-            let days = this.hideDays.length - this.fixedDayCount % this.daysInCurrentMonth;
-            for(let i = 0; i < days; i++){
-                this.showDays.push(this.hideDays[0]);
-                this.showDays[this.showDays.length-1].showComponent();
-                this.inOneMonth ()
-                this.hideDays.shift();         
-            }
-            this.updateDayName();
-
-
-        }
-
+        this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
+        this.updateDayName(this.currentDate, this.showDays);
     }
 
     renderDate() {
-      
         for (let i = 1; i <= this.daysInCurrentMonth; i++) {
             const chosenDate = new Date(
                 this.currentDate.getFullYear(),
@@ -146,14 +96,13 @@ export class Member extends Component {
             objVacation.dayEnd = objVacation.end.getDate()
             arrVocation.push(objVacation)
         }
-        console.log(arrVocation);
         this.filter(arrVocation)
     }
     filter(arrVocation){
         let currentMonth = this.currentDate.getMonth()
         let result = arrVocation.filter(obj => {
-           return obj.monthStart === currentMonth || obj.monthEnd === currentMonth ||
-           this.currentDate.getTime() >= obj.start.getTime() && this.currentDate.getTime() <= obj.end.getTime()
+            return obj.monthStart === currentMonth || obj.monthEnd === currentMonth ||
+            this.currentDate.getTime() >= obj.start.getTime() && this.currentDate.getTime() <= obj.end.getTime()
         });
         this.vacationMember = result        
     }
@@ -203,10 +152,7 @@ export class Member extends Component {
                         }
                     } 
                 }
-             
             }  
-
-            
         }
     }
 
