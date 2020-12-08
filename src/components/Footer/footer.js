@@ -15,9 +15,10 @@ export class Footer extends Component {
         }
         this.FooterDescr = new Component(this.component, "div", "footer__descr");
         this.FooterBlock = new Component(this.component, "div", "footer__block");
-        this.FooterBlockTitle = new Component(this.component, "span", "footer__block--title", );
-        this.FooterBlockIcon = new Component(this.component, "i", "icon icon-001-group", );
-        this.FooterBlockCount = new Component(this.component, "span", "footer__block--count", );
+        this.FooterBlockTitle = new Component(this.component, "span", "footer__block--title");
+        this.FooterBlockIcon = new Component(this.component, "i", "icon icon-001-group");
+        this.FooterBlockCount = new Component(this.component, "span", "footer__block--count");
+        this.FooterBlockCountPercent = new Component(this.component, "span", "footer__block--countpercent");
 
 
     }
@@ -35,31 +36,18 @@ export class Footer extends Component {
 
     }
     FooterDescrRender() {
-        this.FooterHead.component.insertAdjacentElement(
-            "afterend",
-            this.FooterDescr.component,
-        );
+        this.FooterHead.component.insertAdjacentElement("afterend", this.FooterDescr.component);
         this.FooterDescr.component.textContent = "September teams Summary";
     }
 
     FooterBlockRender() {
-        this.FooterDescr.component.insertAdjacentElement(
-            "afterend",
-            this.FooterBlock.component,
-        );
-        this.FooterBlock.component.insertAdjacentElement(
-            "afterbegin",
-            this.FooterBlockTitle.component,
-        );
-        this.FooterBlockTitle.component.textContent = "On vacation 15";
-        this.FooterBlock.component.insertAdjacentElement(
-            "beforeend",
-            this.FooterBlockIcon.component,
-        );
-        this.FooterBlock.component.insertAdjacentElement(
-            "beforeend",
-            this.FooterBlockCount.component,
-        );
-        this.FooterBlockCount.component.textContent = "12%";
+        this.FooterDescr.component.insertAdjacentElement("afterend", this.FooterBlock.component);
+        this.FooterBlock.component.insertAdjacentElement("afterbegin", this.FooterBlockTitle.component);
+        this.FooterBlockTitle.component.textContent = "On vacation";
+        this.FooterBlock.component.insertAdjacentElement("beforeend", this.FooterBlockIcon.component);
+        this.FooterBlock.component.insertAdjacentElement("beforeend", this.FooterBlockCount.component);
+        this.FooterBlockCount.component.textContent = "15";
+        this.FooterBlock.component.insertAdjacentElement("beforeend", this.FooterBlockCountPercent.component);
+        this.FooterBlockCountPercent.component.textContent = "12%";
     }
 }

@@ -13,6 +13,10 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.month-picker {
+    justify-content: center;
     align-items: center;
 }
 
@@ -145,8 +149,7 @@ tbody {
     width: 220px;
 }
 
-.footer__block--count,
-.teamhead-count {
+.footer__block--countpercent {
     background-color: #48BA46;
     font-weight: 400;
     font-size: 14px;
@@ -157,4 +160,15 @@ tbody {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.footer {
+    max-width: 1320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 100px;
+    margin-top: 40px;
+    text-align: left;
+    margin-right: auto;
 }
