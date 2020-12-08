@@ -21,13 +21,15 @@ export class Component {
   hideComponent(){
     this.component.classList.add('close-item');
   }
-
+toggleComponent(){
+    this.component.classList.toggle('close-item');
+  }
   showComponent(){
     this.component.style.display = "block";
   }
 
   appendAfter(element){
-    this.component.insertAdjacentElement("afterbegin", component);
+    this.component.insertAdjacentElement("afterbegin", element);
   }
 
   prepend(element){
@@ -45,5 +47,6 @@ export class Component {
   getParent(){
     console.log(this.parent);
   }
+  
 
 }

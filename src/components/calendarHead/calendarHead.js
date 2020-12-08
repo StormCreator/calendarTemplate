@@ -30,7 +30,8 @@ export class CalendarHead extends Component {
     }
 
     render(){
-        super.render();
+        // super.render();
+        this.parent.insertAdjacentElement('afterbegin',this.component);
         this.renderDays();
     }
 
@@ -46,12 +47,12 @@ export class CalendarHead extends Component {
             .replace(",", "")
             .split(" ");
             
-            let day = new Day(this.component, "td", "outputItem", dayName.substr(0, 2), i);
+            let day = new Day(this.component, "td", "outputItem headerDay", dayName.substr(0, 2), i);
             day.isWeekend();
             this.showDays.push(day); 
             day.render();
             if(i === this.daysInCurrentMonth){
-                new Day(this.component, "td", "outputItem", "Sum").render();
+                new Day(this.component, "td", "outputItem headerDay", "Sum").render();
             }
         }     
         
@@ -73,6 +74,7 @@ export class CalendarHead extends Component {
     }
 
     updateDays(currentDate){
+        console.log(this.showDays)
         this.setCurrentDate(currentDate);
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
       
@@ -92,7 +94,6 @@ export class CalendarHead extends Component {
                 this.showDays.push(this.hideDays[0]);
                 this.showDays[this.showDays.length-1].showComponent();
                 this.hideDays.shift();
-
             }
             this.updateDayName();
         }
