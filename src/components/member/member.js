@@ -18,7 +18,6 @@ export class Member extends Component {
             this.currentDate.getMonth() + 1,
             0
         ).getDate();
-        // this.sumName = new Component(this.component, "td", "sumName");
         this.fixedDayCount = 31;
         this.showDays = [];
         this.hideDays = [];
@@ -116,7 +115,6 @@ export class Member extends Component {
             .format(chosenDate)
             .replace(",", "")
             .split(" ");
-           
             this.day = new Day(this.component, "td", "outputItem", dayName.substr(0, 2))
             this.day.addClass('member-day');
             this.day.isWeekend();
@@ -128,13 +126,10 @@ export class Member extends Component {
                 summary.component.classList.add("member-day");
                 summary.render();
             }
-             
         }
-         
     }
-    ///
-    vacations(){
 
+    vacations(){
         let arrVocation = [];
         for(let i=0; i<this.vocation.length; i++){
             let objVacation = {};
@@ -147,10 +142,9 @@ export class Member extends Component {
             objVacation.monthEnd = objVacation.end.getMonth()
             objVacation.yearEnd = objVacation.end.getFullYear()
             objVacation.dayEnd = objVacation.end.getDate()
-
             arrVocation.push(objVacation)
         }
-
+        console.log(arrVocation);
         this.filter(arrVocation)
     }
     filter(arrVocation){
@@ -159,9 +153,7 @@ export class Member extends Component {
            return obj.monthStart === currentMonth || obj.monthEnd === currentMonth ||
            this.currentDate.getTime() >= obj.start.getTime() && this.currentDate.getTime() <= obj.end.getTime()
         });
-        this.vacationMember = result
-        console.log('смена')
-        
+        this.vacationMember = result        
     }
 
     inOneMonth (){
@@ -174,29 +166,23 @@ export class Member extends Component {
             for(let i=0; i<this.vacationMember.length; i++){
                 if(this.vacationMember[i].monthStart === this.vacationMember[i].monthEnd &&
                     this.vacationMember[i].yearStart === this.currentDate.getFullYear()) {
-                    console.log('в одном')    
                     this.day.firstDay = this.vacationMember[i].dayStart;
                     this.day.lastDay =  this.vacationMember[i].dayEnd; 
-                    console.log(this.day.lastDay)
-
-                        for(let j=this.day.firstDay; j<=this.day.lastDay; j++){
+                        for(let j=this.day.firstDay - 1; j<=this.day.lastDay - 1; j++){
                             if(this.showDays[j]) {
                                 this.showDays[j].vacation = true;
                             }
                         } 
-      
                 } else if(this.vacationMember[i].monthEnd === this.currentDate.getMonth() &&
                         this.vacationMember[i].yearEnd === this.currentDate.getFullYear() 
                 ){
                     this.day.firstDay = 0;
                     this.day.lastDay =  this.vacationMember[i].dayEnd; 
-
                         for(let j=this.day.firstDay; j<=this.day.lastDay; j++){
                             if(this.showDays[j]) {
                                 this.showDays[j].vacation = true;
                             }
                         } 
-                    
                 } else if(this.vacationMember[i].monthStart === this.currentDate.getMonth()&&
                         this.vacationMember[i].yearStart === this.currentDate.getFullYear() ){
                     this.day.firstDay = this.vacationMember[i].dayStart;
