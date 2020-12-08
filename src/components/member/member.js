@@ -172,7 +172,8 @@ export class Member extends Component {
         } 
         if(this.vacationMember.length){
             for(let i=0; i<this.vacationMember.length; i++){
-                if(this.vacationMember[i].monthStart === this.vacationMember[i].monthEnd) {
+                if(this.vacationMember[i].monthStart === this.vacationMember[i].monthEnd &&
+                    this.vacationMember[i].yearStart === this.currentDate.getFullYear()) {
                     console.log('в одном')    
                     this.day.firstDay = this.vacationMember[i].dayStart;
                     this.day.lastDay =  this.vacationMember[i].dayEnd; 
@@ -184,7 +185,9 @@ export class Member extends Component {
                             }
                         } 
       
-                } else if(this.vacationMember[i].monthEnd === this.currentDate.getMonth()){
+                } else if(this.vacationMember[i].monthEnd === this.currentDate.getMonth() &&
+                        this.vacationMember[i].yearEnd === this.currentDate.getFullYear() 
+                ){
                     this.day.firstDay = 0;
                     this.day.lastDay =  this.vacationMember[i].dayEnd; 
 
@@ -194,7 +197,8 @@ export class Member extends Component {
                             }
                         } 
                     
-                } else if(this.vacationMember[i].monthStart === this.currentDate.getMonth()){
+                } else if(this.vacationMember[i].monthStart === this.currentDate.getMonth()&&
+                        this.vacationMember[i].yearStart === this.currentDate.getFullYear() ){
                     this.day.firstDay = this.vacationMember[i].dayStart;
                     for(let j=this.day.firstDay; j<=this.daysInCurrentMonth; j++){
                         if(this.showDays[j]) {
