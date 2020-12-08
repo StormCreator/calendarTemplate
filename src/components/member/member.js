@@ -83,9 +83,7 @@ export class Member extends Component {
             for(let i = 0; i < days; i++){
                 this.showDays[this.showDays.length-1].hideComponent();
                 this.hideDays.unshift(this.showDays[this.showDays.length-1]);
-                this.showDays.pop();
-                this.showDays[i].vacation = false;
-             
+                this.showDays.pop();            
             }
             this.updateDayName();
 
@@ -95,13 +93,12 @@ export class Member extends Component {
             for(let i = 0; i < days; i++){
                 this.showDays.push(this.hideDays[0]);
                 this.showDays[this.showDays.length-1].showComponent();
-                this.hideDays.shift();
-                this.showDays[i].vacation = false;
-         
+                this.hideDays.shift();         
             }
             this.updateDayName();
 
         }
+        
     }
 
     renderDate() {
@@ -165,7 +162,7 @@ export class Member extends Component {
     }
 
     inOneMonth (){
-        for(let l=0; l<=this.showDays.length; l++){
+        for(let l=0; l<this.showDays.length; l++){
             if(this.showDays[l]) {
                 this.showDays[l].vacation = false;
             }
@@ -177,9 +174,9 @@ export class Member extends Component {
                     console.log('в одном')    
                     this.day.firstDay = this.vacationMember[i].dayStart;
                     this.day.lastDay =  this.vacationMember[i].dayEnd; 
-                    console.log(this.day.lastDay)
+                    // console.log(this.day.lastDay)
 
-                        for(let j=this.day.firstDay; j<=this.day.lastDay; j++){
+                        for(let j=this.day.firstDay-1; j<this.day.lastDay; j++){
                             if(this.showDays[j]) {
                                 this.showDays[j].vacation = true;
                             }
@@ -188,10 +185,10 @@ export class Member extends Component {
                 } else if(this.vacationMember[i].monthEnd === this.currentDate.getMonth() &&
                         this.vacationMember[i].yearEnd === this.currentDate.getFullYear() 
                 ){
-                    this.day.firstDay = 0;
+                    // this.day.firstDay = 0;
                     this.day.lastDay =  this.vacationMember[i].dayEnd; 
 
-                        for(let j=this.day.firstDay; j<=this.day.lastDay; j++){
+                        for(let j=0; j<this.day.lastDay; j++){
                             if(this.showDays[j]) {
                                 this.showDays[j].vacation = true;
                             }
@@ -200,15 +197,16 @@ export class Member extends Component {
                 } else if(this.vacationMember[i].monthStart === this.currentDate.getMonth()&&
                         this.vacationMember[i].yearStart === this.currentDate.getFullYear() ){
                     this.day.firstDay = this.vacationMember[i].dayStart;
-                    for(let j=this.day.firstDay; j<=this.daysInCurrentMonth; j++){
+                    for(let j=this.day.firstDay-1; j<this.daysInCurrentMonth; j++){
                         if(this.showDays[j]) {
                             this.showDays[j].vacation = true;
                         }
                     } 
 
                 } else if(this.vacationMember[i].monthStart !== this.currentDate.getMonth() && this.vacationMember[i].monthEnd !== this.currentDate.getMonth()){
-                    for(let j=0; j<=this.daysInCurrentMonth; j++){
+                    for(let j=0; j<this.daysInCurrentMonth; j++){
                         if(this.showDays[j]) {
+                            console.log(this.showDays)
                             this.showDays[j].vacation = true;
                         }
                     } 
