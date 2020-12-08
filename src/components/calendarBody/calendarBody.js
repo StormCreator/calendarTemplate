@@ -76,10 +76,15 @@ export class CalendarBody extends Component {
             this.arrMembers.push(this.member)
         }
     }
-    hideMember() {
-         for (let i = 0; i < this.arrMembers.length; i++) {
-            this.arrMembers[i].toggleComponent()
-        }           
+    hideMember(e) {
+        for (let i = 0; i < this.arrMembers.length; i++) {
+            this.arrMembers[i].toggleComponent();
+        }
+        if(e.target.classList.contains("rotate-block")){
+            e.target.classList.remove("rotate-block");
+        }else{
+            e.target.classList.add("rotate-block");
+        }
     }
 
 

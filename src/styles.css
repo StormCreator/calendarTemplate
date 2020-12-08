@@ -129,3 +129,7 @@ tbody{
 .close-item{
   display: none;
 }
+
+.rotate-block{
+    transform: rotate(180deg);
+}
