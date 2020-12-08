@@ -61,9 +61,7 @@ body {
 .outputItem:not(:first-of-type) {
     border-left: none;
 }
-.close-item{
-  display: none;
-}
+
 
 .weekend {
     background: #f0f0f0;
@@ -127,4 +125,7 @@ tbody{
 .member-day{
     width: 35px;
     height: 35px;
+}
+.close-item{
+  display: none;
 }

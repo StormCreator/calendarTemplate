@@ -2,10 +2,12 @@ import { Component } from "../component";
 import { Member } from "../member";
 import { Day } from "../Day";
 import { dateFormatter } from "../../utils/";
+import { departmentTeams } from "../../data";
 
 export class CalendarBody extends Component {
-    constructor(parentSelector, tagName, className, department, currentDate) {
+    constructor(parentSelector, tagName, className, department, currentDate,id) {
         super(parentSelector, tagName, className, );
+        this.id = id;
         this.department = department;
         // this.parentSelector = parentSelector
         this.teamHead = new Component(this.component, "tr", "teamHead")
@@ -14,6 +16,7 @@ export class CalendarBody extends Component {
         this.teamHeadCount = new Component(this.component, "span", "teamhead-count");
         this.teamHeadArrow = new Component(this.component, "i", "icon icon-chevron-down-solid");
         this.currentDate = currentDate;
+        this.arrMembers = [];
         this.daysInCurrentMonth = new Date(
             this.currentDate.getFullYear(),
             this.currentDate.getMonth() + 1,
@@ -37,12 +40,12 @@ export class CalendarBody extends Component {
     render() {
         // super.render();
         this.parent.insertAdjacentElement('beforeend',this.component);
-        this.renderHead()
-        this.renderHeadName()
-        this.renderMembersName()
-        this.renderHeadIcon()
-        this.renderHeadCount()
-        this.renderHeadArrow()
+        this.renderHead();
+        this.renderHeadName();
+        this.renderMembersName();
+        this.renderHeadIcon();
+        this.renderHeadCount();
+        this.renderHeadArrow();
         this.renderDays();
     }
 
@@ -63,15 +66,22 @@ export class CalendarBody extends Component {
     }
     renderHeadArrow() {
         this.teamHeadName.component.insertAdjacentElement('beforeend', this.teamHeadArrow.component);
+        this.teamHeadArrow.component.addEventListener('click', this.hideMember.bind(this))  
     }
     renderMembersName() {
-        this.arrMembers = [];
         for (let i = 0; i < this.department.members.length; i++) {
             this.member = new Member(this.component, "tr", "member", this.department.members[i], this.currentDate);
             this.member.render();
+            
             this.arrMembers.push(this.member)
         }
     }
+    hideMember() {
+         for (let i = 0; i < this.arrMembers.length; i++) {
+            this.arrMembers[i].toggleComponent()
+        }           
+    }
+
 
 
 

@@ -21,7 +21,9 @@ export class Component {
   hideComponent(){
     this.component.classList.add('close-item');
   }
-
+toggleComponent(){
+    this.component.classList.toggle('close-item');
+  }
   showComponent(){
     this.component.style.display = "block";
   }
@@ -45,5 +47,6 @@ export class Component {
   getParent(){
     console.log(this.parent);
   }
+  
 
 }
