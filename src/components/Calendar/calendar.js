@@ -41,7 +41,7 @@ export class Calendar {
         this.calendarHead.render();
         this.calendarHead.prepend(new Component(this.calendarHead.component, 'td', 'add-vacation').component);
         this.table.render();
-        this.FooterHeadrenderDays();
+        this.FooterHeadRenderDays();
         this.FooterDescrRender();
         this.FooterBlockRender();
     }
@@ -57,7 +57,7 @@ export class Calendar {
         this.FooterBlock.component.insertAdjacentElement('beforeend', this.FooterBlockCount.component);
         this.FooterBlockCount.component.textContent = "12%";
     }
-    FooterHeadrenderDays() {
+    FooterHeadRenderDays() {
 
         for (let i = 1; i <= this.daysInCurrentMonth; i++) {
             const chosenDate = new Date(
