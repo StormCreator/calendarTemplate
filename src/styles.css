@@ -134,6 +134,12 @@ tbody{
 .close-item{
   display: none;
 }
+
 .vacation{
     background-color: red;
+}
+
+.rotate-block{
+    transform: rotate(180deg);
+
 }

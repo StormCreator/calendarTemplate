@@ -176,6 +176,7 @@ export class Member extends Component {
                     console.log('в одном')    
                     this.day.firstDay = this.vacationMember[i].dayStart;
                     this.day.lastDay =  this.vacationMember[i].dayEnd; 
+                    console.log(this.day.lastDay)
 
                         for(let j=this.day.firstDay; j<=this.day.lastDay; j++){
                             if(this.showDays[j]) {
