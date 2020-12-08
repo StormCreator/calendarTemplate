@@ -1,18 +1,44 @@
-import { Table } from "../table";
 import { MonthPicker } from "../monthPicker";
+import { Component } from "../component";
+import { CalendarHead } from "../calendarHead";
+import { CalendarBody } from "../calendarBody";
+import { departmentTeams } from "../../data";
 
 
-
-export class Calendar {
+export class Calendar{
     constructor(departmentTeams) {
-        this.monthPicker = new MonthPicker("#app","div","month-picker");
-        this.table = new Table("#app","table","table",departmentTeams);
+        this.currentDate = new Date();
+        // this.table = new Table("#app","table","table", this.currentDate);
+        this.table = new Component("#app", "table", "table");
+        this.calendarHead = new CalendarHead(this.table.component, 'thead', 'calendar-head', this.currentDate);
+        this.arrBody = [];
+        for(let i = 0; i < departmentTeams.teams.length; i++){
+            this.calendarBody = new CalendarBody(this.table.component, "tbody", "body", departmentTeams.teams[i], this.currentDate,`id-${i}`);
+            this.calendarBody.render();
+            this.arrBody.push(this.calendarBody)
+        }
+
+        this.monthPicker = new MonthPicker("#app","div","month-picker", this.calendarHead, this.arrBody);
     }
     render() {
-        console.log('s')
-        setTimeout(() => this.monthPicker.render(), 0);
-        setTimeout(() => this.table.render(), 0);
+        this.monthPicker.render();
+        // this.calendarHead.setParent(this.table.component);
+        
+        this.calendarHead.render();
+        this.calendarHead.prepend(new Component(this.calendarHead.component, 'td', 'add-vacation').component);
+        // this.addTeamBody();
+        this.table.render();
+
+        
     }
-  
-  }
-  
+
+    // addTeamBody(){
+    //     console.log(departmentTeams)
+    //     // this.arrBody = [];
+    //     // for(let i = 0; i < departmentTeams.teams.length; i++){
+    //     //     this.calendarBody = new CalendarBody(this.table.component, "tbody", "body", departmentTeams.teams[i], this.currentDate);
+    //     //     this.calendarBody.render();
+    //     //     this.arrBody.push(this.calendarBody)
+    //     // }
+    // }
+}

@@ -14,4 +14,39 @@ export class Component {
     // return this.component;
   }
 
+  getComponent(){
+    return this.component;
+  }
+
+  hideComponent(){
+    this.component.classList.add('close-item');
+  }
+toggleComponent(){
+    this.component.classList.toggle('close-item');
+  }
+  showComponent(){
+    this.component.style.display = "block";
+  }
+
+  appendAfter(element){
+    this.component.insertAdjacentElement("afterbegin", element);
+  }
+
+  prepend(element){
+    this.component.prepend(element);
+  }
+
+  addClass(className){
+    this.component.classList.add(className);
+  }
+  
+  setParent(parent){
+    this.parent = parent;
+  }
+
+  getParent(){
+    console.log(this.parent);
+  }
+  
+
 }
