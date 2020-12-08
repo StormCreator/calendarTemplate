@@ -97,4 +97,5 @@ tr {
 
 .teamHead-name {
     display: flex;
+    justify-content: space-around;
 }
