@@ -125,9 +125,7 @@ tbody {
     display: flex;
     justify-content: space-between;
     width: 263px;
-    border-bottom: 1px solid rgb(192, 192, 192);
-    border-top: 1px solid rgb(192, 192, 192);
-    border-right: 1px solid rgb(192, 192, 192);
+    border: 1px solid rgb(192, 192, 192);
     border-left: 3px solid rgb(155, 153, 255);
 }
 
