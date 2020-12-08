@@ -27,7 +27,7 @@ body {
 }
 .calendar-head {
   display: flex;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
 }
 .add-vacation{
   width: 263px;
@@ -99,6 +99,11 @@ body {
 
 tbody{
     width: 100%;
+    
+}
+.body{
+    display: block;
+    margin-bottom: 30px;
 }
 
 .teamHead{
@@ -128,4 +133,7 @@ tbody{
 }
 .close-item{
   display: none;
+}
+.vacation{
+    background-color: red;
 }

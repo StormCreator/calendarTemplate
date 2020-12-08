@@ -74,7 +74,6 @@ export class CalendarHead extends Component {
     }
 
     updateDays(currentDate){
-        console.log(this.showDays)
         this.setCurrentDate(currentDate);
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
       

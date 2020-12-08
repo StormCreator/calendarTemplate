@@ -133,7 +133,7 @@ export class CalendarBody extends Component {
     }
 
     updateDays(currentDate){
-        console.log(this.showDays)
+
         this.setCurrentDate(currentDate);
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
       

@@ -10,6 +10,7 @@ export class Member extends Component {
         super(parentSelector, tagName, className, );
         this.member = member;
         this.name = member.name;
+        this.vocation = this.member.vacations;
         this.memberName = new Component(this.component, "td", "memberName");
         this.currentDate = currentDate;
         this.daysInCurrentMonth = new Date(
@@ -27,8 +28,11 @@ export class Member extends Component {
     render() {
         super.render();
         this.memberName.component.textContent = this.name;
+        this.vacations();
         this.renderMemberName()
+
         this.renderDate()
+
         // this.updateDays(this.currentDate)
         // this.renderDays()
     }
@@ -68,9 +72,11 @@ export class Member extends Component {
     }
     
     updateDays(currentDate){
+        this.vacations();
+        this.inOneMonth ()
         this.setCurrentDate(currentDate);
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
-      
+
         if( this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length)
         {
             let days = this.fixedDayCount % this.daysInCurrentMonth - this.hideDays.length;
@@ -78,6 +84,8 @@ export class Member extends Component {
                 this.showDays[this.showDays.length-1].hideComponent();
                 this.hideDays.unshift(this.showDays[this.showDays.length-1]);
                 this.showDays.pop();
+                this.showDays[i].vacation = false;
+             
             }
             this.updateDayName();
 
@@ -88,12 +96,16 @@ export class Member extends Component {
                 this.showDays.push(this.hideDays[0]);
                 this.showDays[this.showDays.length-1].showComponent();
                 this.hideDays.shift();
+                this.showDays[i].vacation = false;
+         
             }
             this.updateDayName();
+
         }
     }
 
     renderDate() {
+      
         for (let i = 1; i <= this.daysInCurrentMonth; i++) {
             const chosenDate = new Date(
                 this.currentDate.getFullYear(),
@@ -104,18 +116,103 @@ export class Member extends Component {
             .format(chosenDate)
             .replace(",", "")
             .split(" ");
-            let day = new Day(this.component, "td", "outputItem", dayName.substr(0, 2))
-            day.addClass('member-day');
-            day.isWeekend();
-            this.showDays.push(day); 
-            day.render();
+           
+            this.day = new Day(this.component, "td", "outputItem", dayName.substr(0, 2))
+            this.day.addClass('member-day');
+            this.day.isWeekend();
+            this.showDays.push(this.day); 
+            this.inOneMonth () 
+            this.day.render();
             if(i === this.daysInCurrentMonth){
                 let summary = new Day(this.component, "td", "outputItem headerDay", "Sum");
                 summary.component.classList.add("member-day");
                 summary.render();
             }
+             
         }
+         
+    }
+    ///
+    vacations(){
+
+        let arrVocation = [];
+        for(let i=0; i<this.vocation.length; i++){
+            let objVacation = {};
+            objVacation.start = new Date((this.vocation[i].startDate).split('.').reverse().join('-'))
+            objVacation.end = new Date ((this.vocation[i].endDate).split('.').reverse().join('-'))
+            objVacation.yearStart = objVacation.start.getFullYear()
+            objVacation.monthStart = objVacation.start.getMonth()
+            objVacation.dayStart = objVacation.start.getDate()
+            objVacation.yearEnd = objVacation.end.getFullYear()
+            objVacation.monthEnd = objVacation.end.getMonth()
+            objVacation.yearEnd = objVacation.end.getFullYear()
+            objVacation.dayEnd = objVacation.end.getDate()
+
+            arrVocation.push(objVacation)
+        }
+
+        this.filter(arrVocation)
+    }
+    filter(arrVocation){
+        let currentMonth = this.currentDate.getMonth()
+        let result = arrVocation.filter(obj => {
+           return obj.monthStart === currentMonth || obj.monthEnd === currentMonth ||
+           this.currentDate.getTime() >= obj.start.getTime() && this.currentDate.getTime() <= obj.end.getTime()
+        });
+        this.vacationMember = result
+        console.log('смена')
+        
     }
 
+    inOneMonth (){
+        for(let l=0; l<=this.showDays.length; l++){
+            if(this.showDays[l]) {
+                this.showDays[l].vacation = false;
+            }
+        } 
+        if(this.vacationMember.length){
+            for(let i=0; i<this.vacationMember.length; i++){
+                if(this.vacationMember[i].monthStart === this.vacationMember[i].monthEnd) {
+                    console.log('в одном')    
+                    this.day.firstDay = this.vacationMember[i].dayStart;
+                    this.day.lastDay =  this.vacationMember[i].dayEnd; 
+
+                        for(let j=this.day.firstDay; j<=this.day.lastDay; j++){
+                            if(this.showDays[j]) {
+                                this.showDays[j].vacation = true;
+                            }
+                        } 
+      
+                } else if(this.vacationMember[i].monthEnd === this.currentDate.getMonth()){
+                    this.day.firstDay = 0;
+                    this.day.lastDay =  this.vacationMember[i].dayEnd; 
+
+                        for(let j=this.day.firstDay; j<=this.day.lastDay; j++){
+                            if(this.showDays[j]) {
+                                this.showDays[j].vacation = true;
+                            }
+                        } 
+                    
+                } else if(this.vacationMember[i].monthStart === this.currentDate.getMonth()){
+                    this.day.firstDay = this.vacationMember[i].dayStart;
+                    for(let j=this.day.firstDay; j<=this.daysInCurrentMonth; j++){
+                        if(this.showDays[j]) {
+                            this.showDays[j].vacation = true;
+                        }
+                    } 
+
+                } else if(this.vacationMember[i].monthStart !== this.currentDate.getMonth() && this.vacationMember[i].monthEnd !== this.currentDate.getMonth()){
+                    for(let j=0; j<=this.daysInCurrentMonth; j++){
+                        if(this.showDays[j]) {
+                            this.showDays[j].vacation = true;
+                        }
+                    } 
+                }
+             
+            }  
+
+            
+        }
+    }
 
 }
