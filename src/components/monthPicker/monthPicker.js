@@ -2,14 +2,22 @@ import { dateFormatter } from "../../utils";
 import { Component } from "../component";
 
 export class MonthPicker extends Component {
-  constructor(parentSelector,tagName,className, calendarHead,arrBody) {
-    super(parentSelector,tagName,className);
+  constructor(parentSelector, tagName, className, calendarHead, arrayBody) {
+    super(parentSelector, tagName, className);
     this.currentDate = new Date();
     this.calendarHead = calendarHead;
-    this.arrBody = arrBody;
+    this.arrBody = arrayBody;
     this.label = new Component(this.component, "h1", "month");
-    this.arrowPrev = new Component(this.component, "i", "arrowPrev icon icon-Arrow-2");
-    this.arrowNext = new Component(this.component, "i", "arrowNext icon icon-Arrow-3");
+    this.arrowPrev = new Component(
+      this.component,
+      "i",
+      "arrowPrev icon icon-Arrow-2",
+    );
+    this.arrowNext = new Component(
+      this.component,
+      "i",
+      "arrowNext icon icon-Arrow-3",
+    );
   }
 
   render() {
@@ -25,19 +33,27 @@ export class MonthPicker extends Component {
 
   updateCurrentLabel(date) {
     const { component: label } = this.label;
-    let currentMonth = dateFormatter
+    const currentMonth = dateFormatter
       .format(new Date(date))
       .replace(",", "")
       .split(" ")[1];
-      label.textContent =  currentMonth + ' ' + this.currentDate.getFullYear();
+    label.textContent = `${currentMonth} ${this.currentDate.getFullYear()}`;
   }
-  renderArrow(){
-    this.component.insertAdjacentElement('afterbegin',this.arrowPrev.component);
-    this.component.insertAdjacentElement('beforeend',this.arrowNext.component);
-    
-    this.arrowNext.component.addEventListener('click', () => { this.changeMonth("next") });
 
-    this.arrowPrev.component.addEventListener('click', () => { this.changeMonth("prev") });
+  renderArrow() {
+    this.component.insertAdjacentElement(
+      "afterbegin",
+      this.arrowPrev.component,
+    );
+    this.component.insertAdjacentElement("beforeend", this.arrowNext.component);
+
+    this.arrowNext.component.addEventListener("click", () => {
+      this.changeMonth("next");
+    });
+
+    this.arrowPrev.component.addEventListener("click", () => {
+      this.changeMonth("prev");
+    });
   }
   // nextMonth() {
   //   this.currentDate = new Date(this.currentDate.getFullYear(),this.currentDate.getMonth()+1,1);
@@ -50,18 +66,26 @@ export class MonthPicker extends Component {
   //   this.calendarHead.updateDays(this.currentDate);
   // }
 
-  changeMonth(month){
-    if(month === "next"){
-      this.currentDate = new Date(this.currentDate.getFullYear(),this.currentDate.getMonth()+1,1);
-    }else{
-      this.currentDate = new Date(this.currentDate.getFullYear(),this.currentDate.getMonth()-1,1);
+  changeMonth(month) {
+    if (month === "next") {
+      this.currentDate = new Date(
+        this.currentDate.getFullYear(),
+        this.currentDate.getMonth() + 1,
+        1,
+      );
+    } else {
+      this.currentDate = new Date(
+        this.currentDate.getFullYear(),
+        this.currentDate.getMonth() - 1,
+        1,
+      );
     }
-    this.updateCurrentLabel(this.currentDate)
+    this.updateCurrentLabel(this.currentDate);
     this.calendarHead.updateDays(this.currentDate);
     // this.calendarBody.updateDays(this.currentDate);
-    for(let i= 0; i<this.arrBody.length; i++){
-      this.arrBody[i].updateDays(this.currentDate);
-      this.arrBody[i].updateDaysMembers(this.currentDate)
+    for (let index = 0; index < this.arrBody.length; index++) {
+      this.arrBody[index].updateDays(this.currentDate);
+      this.arrBody[index].updateDaysMembers(this.currentDate);
     }
   }
 }
