@@ -1,5 +1,5 @@
 export class Component {
-  constructor(parentSelector, tagName = "div", className = '') {
+  constructor(parentSelector, tagName = "div", className = "") {
     if (typeof parentSelector === "string") {
       this.parent = document.querySelector(parentSelector);
     } else {
@@ -14,39 +14,39 @@ export class Component {
     // return this.component;
   }
 
-  getComponent(){
+  getComponent() {
     return this.component;
   }
 
-  hideComponent(){
-    this.component.classList.add('close-item');
+  hideComponent() {
+    this.component.classList.add("close-item");
   }
-toggleComponent(){
-    this.component.classList.toggle('close-item');
+
+  toggleComponent() {
+    this.component.classList.toggle("close-item");
   }
-  showComponent(){
+
+  showComponent() {
     this.component.style.display = "block";
   }
 
-  appendAfter(element){
+  appendAfter(element) {
     this.component.insertAdjacentElement("afterbegin", element);
   }
 
-  prepend(element){
+  prepend(element) {
     this.component.prepend(element);
   }
 
-  addClass(className){
+  addClass(className) {
     this.component.classList.add(className);
   }
-  
-  setParent(parent){
+
+  setParent(parent) {
     this.parent = parent;
   }
 
-  getParent(){
+  getParent() {
     console.log(this.parent);
   }
-  
-
 }

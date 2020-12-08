@@ -22,6 +22,7 @@
   },
   "rules": {
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+    "no-restricted-syntax":"off",
     "unicorn/filename-case": [
       "error",
       {
