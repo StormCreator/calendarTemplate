@@ -63,7 +63,7 @@ export class Member extends Component {
   updateDays(currentDate) {
     this.vacations();
     this.setCurrentDate(currentDate);
-    this.getSum();
+
     this.summary.setLabelName(this.sum);
 
     this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
@@ -74,6 +74,9 @@ export class Member extends Component {
         (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
       for (let index = 0; index < days; index++) {
         this.showDays[this.showDays.length - 1].hideComponent();
+        this.showDays[this.showDays.length - 1].component.classList.remove(
+          "vacation",
+        );
         this.hideDays.unshift(this.showDays[this.showDays.length - 1]);
         this.inOneMonth();
         this.showDays.pop();
@@ -113,13 +116,13 @@ export class Member extends Component {
         "outputItem",
         dayName.slice(0, 2),
       );
+      this.getSum();
       this.day.addClass("member-day");
       this.day.isWeekend();
       this.showDays.push(this.day);
       this.inOneMonth();
       this.day.render();
       if (index === this.daysInCurrentMonth) {
-        this.getSum();
         this.summary = new Day(
           this.component,
           "td",
@@ -240,9 +243,15 @@ export class Member extends Component {
   }
 
   getSum() {
+    // if(this.component.classList.contains("vacation close-item") ) {
+    //     this.component.classList.remove('vacation')
+    // }
+    // console.log(this.component)
+
     const vacations = this.component.querySelectorAll(".vacation").length;
     const vacationWeekend = this.component.querySelectorAll(".vacation.weekend")
       .length;
+
     this.sum = vacations - vacationWeekend;
   }
 }

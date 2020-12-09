@@ -40,6 +40,7 @@ export class Day extends Component {
     }
 
     this.dayName = dayName;
+
     this.isWeekend();
     this.isVacation();
   }
