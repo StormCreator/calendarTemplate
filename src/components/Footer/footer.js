@@ -27,6 +27,8 @@ export class Footer extends Component {
         this.FooterHeadRender();
         this.FooterDescrRender();
         this.FooterBlockRender();
+        this.renderDays();
+
     }
     FooterHeadRender() {
         this.component.insertAdjacentElement("beforeend", this.FooterHead.component);
@@ -48,5 +50,45 @@ export class Footer extends Component {
         this.FooterBlockCount.component.textContent = "15";
         this.FooterBlock.component.insertAdjacentElement("beforeend", this.FooterBlockCountPercent.component);
         this.FooterBlockCountPercent.component.textContent = "12%";
+    }
+
+    renderDays() {
+        for (let index = 1; index <= this.daysInCurrentMonth; index++) {
+            const chosenDate = new Date(
+                this.currentDate.getFullYear(),
+                this.currentDate.getMonth(),
+                index,
+            );
+            const [dayName] = dateFormatter
+                .format(chosenDate)
+                .replace(",", "")
+                .split(" ");
+
+            const day = new Day(
+                this.component,
+                "td",
+                "outputItem headerDay",
+                dayName.slice(0, 2),
+                index,
+            );
+            day.isWeekend();
+            this.showDays.push(day);
+            day.render();
+            if (index === this.daysInCurrentMonth) {
+                new Day(this.component, "td", "outputItem headerDay", "Sum").render();
+            }
+        }
+    }
+
+    updateDays(currentDate) {
+        this.setCurrentDate(currentDate);
+        this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
+        this.updateData(
+            this.fixedDayCount,
+            this.daysInCurrentMonth,
+            this.hideDays,
+            this.showDays,
+        );
+        this.updateDayName(this.currentDate, this.showDays);
     }
 }
