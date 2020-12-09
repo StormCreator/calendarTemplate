@@ -1,174 +1,187 @@
-body {
-    font-family: "Open Sans", sans-serif;
-}
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-#app {
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.month-picker {
-    justify-content: center;
-    align-items: center;
-}
-
-.chosenMonth {
-    font-size: 32px;
-    margin-bottom: 5vh;
-    margin-top: 5vh;
-}
-
-.outputCalendar {
-    display: flex;
-}
-
-.calendar-head {
-    display: flex;
-    margin: 20px auto;
-}
-
-.add-vacation {
-    width: 263px;
-    border: 1px solid rgb(192, 192, 192);
-}
-
-.outputDay {
-    border-bottom: none;
-    border-left: none;
-    padding: 5px;
-    text-align: center;
-    color: rgb(33, 33, 33);
-    font-size: 12px;
-}
-
-.outputDate {
-    text-align: center;
-    color: rgb(56, 56, 56);
-    font-size: 14;
-}
-
-.outputItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 34px;
-    padding: 8px 6px;
-    border: 1px solid rgb(192, 192, 192);
-}
-
-.outputItem:not(:first-of-type) {
-    border-left: none;
-}
-
-.weekend {
-    background: #f0f0f0;
-}
-
-
-/* ..... */
-
-.month-picker {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.month {
-    width: 270px;
-    text-align: center;
-}
-
-.arrowNext,
-.arrowPrev {
-    padding: 15px;
-}
-
-.arrowNext:hover,
-.arrowPrev:hover {
-    cursor: pointer;
-    color: red;
-}
-
-.table {
-    max-width: 1320px;
-    margin: 0 auto;
-}
-
-tbody {
-    width: 100%;
-}
-
-.teamHead {
-    width: 100%;
-    display: flex;
-}
-
-.day,
-.sumName {
-    width: 35px;
-    height: 20px;
-}
-
-.teamHead-name {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 263px;
-    border: 1px solid rgb(192, 192, 192);
-}
-
-.member {
-    display: flex;
-}
-
-.member-day {
-    width: 35px;
-    height: 35px;
-}
-
-.close-item {
-    display: none;
-}
-
-.rotate-block {
-    transform: rotate(180deg);
-}
-
-.footer__block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 220px;
-}
-
-.footer__block--countpercent {
-    background-color: #48BA46;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    color: #fff;
-    width: 42px;
-    height: 26px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer {
-    max-width: 1320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-left: 100px;
-    margin-top: 40px;
-    text-align: left;
-    margin-right: auto;
-}
+    body {
+        font-family: "Open Sans", sans-serif;
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    
+    #app {
+        width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .month-picker {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .chosenMonth {
+        font-size: 32px;
+        margin-bottom: 5vh;
+        margin-top: 5vh;
+    }
+    
+    .outputCalendar {
+        display: flex;
+    }
+    
+    .calendar-head {
+        display: flex;
+        margin: 20px auto;
+        display: flex;
+        margin: 20px auto 0 auto;
+    }
+    
+    .add-vacation {
+        width: 263px;
+        border: 1px solid rgb(192, 192, 192);
+    }
+    
+    .outputDay {
+        border-bottom: none;
+        border-left: none;
+        padding: 5px;
+        text-align: center;
+        color: rgb(33, 33, 33);
+        font-size: 12px;
+    }
+    
+    .outputDate {
+        text-align: center;
+        color: rgb(56, 56, 56);
+        font-size: 14;
+    }
+    
+    .outputItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 34px;
+        padding: 8px 6px;
+        border: 1px solid rgb(192, 192, 192);
+    }
+    
+    .outputItem:not(:first-of-type) {
+        border-left: none;
+    }
+    
+    .weekend {
+        background: #f0f0f0;
+    }
+    /* ..... */
+    
+    .month-picker {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .month {
+        width: 270px;
+        text-align: center;
+    }
+    
+    .arrowNext,
+    .arrowPrev {
+        padding: 15px;
+    }
+    
+    .arrowNext:hover,
+    .arrowPrev:hover {
+        cursor: pointer;
+        color: red;
+    }
+    
+    .table {
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+    
+    tbody {
+        width: 100%;
+    }
+    
+    .body {
+        display: block;
+        margin-bottom: 30px;
+    }
+    
+    .teamHead {
+        width: 100%;
+        display: flex;
+    }
+    
+    .day,
+    .sumName {
+        width: 35px;
+        height: 20px;
+    }
+    
+    .teamHead-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 263px;
+        border: 1px solid rgb(192, 192, 192);
+    }
+    
+    .member {
+        display: flex;
+    }
+    
+    .member-day {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .close-item {
+        display: none;
+    }
+    
+    .rotate-block {
+        transform: rotate(180deg);
+    }
+    
+    .footer__block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 220px;
+    }
+    
+    .footer__block--countpercent {
+        background-color: #48BA46;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        color: #fff;
+        width: 42px;
+        height: 26px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .footer {
+        max-width: 1320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 100px;
+        margin-top: 40px;
+        text-align: left;
+        margin-right: auto;
+    }
+    
+    .vacation {
+        background-color: red;
+    }
+    
+    .rotate-block {
+        transform: rotate(180deg);
+    }

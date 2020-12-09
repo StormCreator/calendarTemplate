@@ -146,22 +146,22 @@ export class CalendarBody extends Component {
     }
 
     updateDayName() {
-        for (let index = 0; index < this.showDays.length; index++) {
-            const chosenDate = new Date(
-                this.currentDate.getFullYear(),
-                this.currentDate.getMonth(),
-                index + 1,
-            );
-            const [dayName] = dateFormatter
-                .format(chosenDate)
-                .replace(",", "")
-                .split(" ");
-            this.showDays[index].setLabelName(dayName.slice(0, 2));
+            for (let index = 0; index < this.showDays.length; index++) {
+                const chosenDate = new Date(
+                    this.currentDate.getFullYear(),
+                    this.currentDate.getMonth(),
+                    index + 1,
+                );
+                const [dayName] = dateFormatter
+                    .format(chosenDate)
+                    .replace(",", "")
+                    .split(" ");
+                this.showDays[index].setLabelName(dayName.slice(0, 2));
+            }
         }
-    }
-
+        //измнения что приняла
     updateDays(currentDate) {
-        console.log(this.showDays);
+
         this.setCurrentDate(currentDate);
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
 
