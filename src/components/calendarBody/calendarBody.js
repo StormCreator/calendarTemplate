@@ -8,30 +8,15 @@ export class CalendarBody extends Component {
     super(parentSelector, tagName, className);
     this.id = id;
     this.department = department;
+    // this.parentSelector = parentSelector
     this.teamHead = new Component(this.component, "tr", "teamHead");
     this.teamHeadName = new Component(this.component, "td", "teamHead-name");
-    this.teamHeadIcon = new Component(
-      this.component,
-      "i",
-      "icon icon-001-group",
-    );
-    this.teamHeadCount = new Component(
-      this.component,
-      "span",
-      "teamhead-count",
-    );
-    this.teamHeadArrow = new Component(
-      this.component,
-      "i",
-      "icon icon-chevron-down-solid",
-    );
+    this.teamHeadIcon = new Component(this.component, "i", "icon icon-001-group");
+    this.teamHeadCount = new Component(this.component, "span", "teamhead-count");
+    this.teamHeadArrow = new Component(this.component, "i", "icon icon-chevron-down-solid");
     this.currentDate = currentDate;
     this.arrMembers = [];
-    this.daysInCurrentMonth = new Date(
-      this.currentDate.getFullYear(),
-      this.currentDate.getMonth() + 1,
-      0,
-    ).getDate();
+    this.daysInCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
     this.fixedDayCount = 31;
     this.showDays = [];
     this.hideDays = [];
@@ -62,50 +47,28 @@ export class CalendarBody extends Component {
   }
 
   renderHeadName() {
-    this.teamHead.component.insertAdjacentElement(
-      "afterbegin",
-      this.teamHeadName.component,
-    );
+    this.teamHead.component.insertAdjacentElement("afterbegin", this.teamHeadName.component);
     this.teamHeadName.component.textContent = this.department.name;
   }
 
   renderHeadIcon() {
-    this.teamHeadName.component.insertAdjacentElement(
-      "beforeend",
-      this.teamHeadIcon.component,
-    );
+    this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadIcon.component);
   }
 
   renderHeadCount() {
-    this.teamHeadName.component.insertAdjacentElement(
-      "beforeend",
-      this.teamHeadCount.component,
-    );
+    this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadCount.component);
     this.teamHeadCount.component.textContent = "8%";
   }
 
   renderHeadArrow() {
-    this.teamHeadName.component.insertAdjacentElement(
-      "beforeend",
-      this.teamHeadArrow.component,
-    );
-    this.teamHeadArrow.component.addEventListener(
-      "click",
-      this.hideMember.bind(this),
-    );
+    this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadArrow.component);
+    this.teamHeadArrow.component.addEventListener("click", this.hideMember.bind(this));
   }
 
   renderMembersName() {
     for (let index = 0; index < this.department.members.length; index++) {
-      this.member = new Member(
-        this.component,
-        "tr",
-        "member",
-        this.department.members[index],
-        this.currentDate,
-      );
+      this.member = new Member(this.component, "tr", "member", this.department.members[index], this.currentDate);
       this.member.render();
-
       this.arrMembers.push(this.member);
     }
   }

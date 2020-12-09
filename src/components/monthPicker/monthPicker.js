@@ -33,18 +33,12 @@ export class MonthPicker extends Component {
 
   updateCurrentLabel(date) {
     const { component: label } = this.label;
-    const currentMonth = dateFormatter
-      .format(new Date(date))
-      .replace(",", "")
-      .split(" ")[1];
+    const currentMonth = dateFormatter.format(new Date(date)).replace(",", "").split(" ")[1];
     label.textContent = `${currentMonth} ${this.currentDate.getFullYear()}`;
   }
 
   renderArrow() {
-    this.component.insertAdjacentElement(
-      "afterbegin",
-      this.arrowPrev.component,
-    );
+    this.component.insertAdjacentElement("afterbegin", this.arrowPrev.component);
     this.component.insertAdjacentElement("beforeend", this.arrowNext.component);
 
     this.arrowNext.component.addEventListener("click", () => {
@@ -68,17 +62,9 @@ export class MonthPicker extends Component {
 
   changeMonth(month) {
     if (month === "next") {
-      this.currentDate = new Date(
-        this.currentDate.getFullYear(),
-        this.currentDate.getMonth() + 1,
-        1,
-      );
+      this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 1);
     } else {
-      this.currentDate = new Date(
-        this.currentDate.getFullYear(),
-        this.currentDate.getMonth() - 1,
-        1,
-      );
+      this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, 1);
     }
     this.updateCurrentLabel(this.currentDate);
     this.calendarHead.updateDays(this.currentDate);

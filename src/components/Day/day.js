@@ -1,16 +1,8 @@
 import { Component } from "../component";
 
 export class Day extends Component {
-  constructor(
-    parentSelector,
-    tagName,
-    className,
-    dayName = " ",
-    dayNumber = " ",
-  ) {
+  constructor(parentSelector, tagName, className, dayName = " ", dayNumber = " ") {
     super(parentSelector, tagName, className);
-    // this.vacationMember = vacationMember;
-    this.vacation = false;
     this.dayName = dayName;
     this.dayNumber = dayNumber;
     this.labelName = new Component(this.component, "span", "outputDay");
@@ -29,6 +21,8 @@ export class Day extends Component {
   createCurrentLabel() {
     this.component.append(this.labelName.component);
     this.component.append(this.labelNumber.component);
+    // this.component.appendChild(this.labelName.component);
+    // this.component.appendChild(this.labelNumber.component);
   }
 
   setLabelName(dayName) {
