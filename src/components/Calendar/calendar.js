@@ -37,7 +37,8 @@ export class Calendar {
             this.calendarHead,
             this.arrBody,
         );
-        this.footer = new Footer("#app", "div", "footer");
+        this.footer = new Footer(this.table.component, "tr", "footer");
+
     }
 
     render() {
