@@ -27,7 +27,7 @@ body {
 }
 .calendar-head {
   display: flex;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
 }
 .add-vacation{
   width: 144px;
@@ -137,6 +137,11 @@ left: 16px;
 
 tbody{
     width: 100%;
+    
+}
+.body{
+    display: block;
+    margin-bottom: 30px;
 }
 
 .teamHead{
@@ -370,6 +375,26 @@ tbody{
   display: none;
 }
 
+.vacation{
+    /* background-color: red; */
+    /* border-right: 1px solid red; */
+    position: relative;
+
+}
+.vacation::before {
+    position: absolute;
+    width: 35px;
+    height: 25px;
+    background-color: rebeccapurple;
+    content: " ";
+    left: -1px;
+    top: 5px;
+}
 .rotate-block{
     transform: rotate(180deg);
+
+}
+.headerDay {
+    background: #f0f0f0;
+
 }

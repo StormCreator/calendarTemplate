@@ -73,33 +73,44 @@ export class CalendarBody extends Component {
     }
   }
 
-  hideMember(element) {
+  hideMember(event) {
     for (let index = 0; index < this.arrMembers.length; index++) {
       this.arrMembers[index].toggleComponent();
     }
-    if (element.target.classList.contains("rotate-block")) {
-      element.target.classList.remove("rotate-block");
+    if (event.target.classList.contains("rotate-block")) {
+      event.target.classList.remove("rotate-block");
     } else {
-      element.target.classList.add("rotate-block");
+      event.target.classList.add("rotate-block");
     }
   }
 
   renderDays() {
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
-      const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index);
-      const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
+      const chosenDate = new Date(
+        this.currentDate.getFullYear(),
+        this.currentDate.getMonth(),
+        index,
+      );
+      const [dayName] = dateFormatter
+        .format(chosenDate)
+        .replace(",", "")
+        .split(" ");
       const day = new Day(
         this.teamHead.component,
         "td",
         "outputItem member-day",
         dayName.slice(0, 2),
-        // dayName.substr(0, 2),
       );
       day.isWeekend();
       this.showDays.push(day);
       day.render();
       if (index === this.daysInCurrentMonth) {
-        new Day(this.teamHead.component, "td", "outputItem member-day headerDay", "Sum").render();
+        new Day(
+          this.teamHead.component,
+          "td",
+          "outputItem member-day headerDay",
+          " ",
+        ).render();
       }
     }
   }
@@ -111,34 +122,15 @@ export class CalendarBody extends Component {
     }
   }
 
-  updateDayName() {
-    for (let index = 0; index < this.showDays.length; index++) {
-      const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index + 1);
-      const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
-      this.showDays[index].setLabelName(dayName.slice(0, 2));
-      //   this.showDays[index].setLabelName(dayName.substr(0, 2));
-    }
-  }
-
   updateDays(currentDate) {
     this.setCurrentDate(currentDate);
     this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
-    if (this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length) {
-      const days = (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
-      for (let index = 0; index < days; index++) {
-        this.showDays[this.showDays.length - 1].hideComponent();
-        this.hideDays.unshift(this.showDays[this.showDays.length - 1]);
-        this.showDays.pop();
-      }
-      this.updateDayName();
-    } else {
-      const days = this.hideDays.length - (this.fixedDayCount % this.daysInCurrentMonth);
-      for (let index = 0; index < days; index++) {
-        this.showDays.push(this.hideDays[0]);
-        this.showDays[this.showDays.length - 1].showComponent();
-        this.hideDays.shift();
-      }
-      this.updateDayName();
-    }
+    this.updateData(
+      this.fixedDayCount,
+      this.daysInCurrentMonth,
+      this.hideDays,
+      this.showDays,
+    );
+    this.updateDayName(this.currentDate, this.showDays);
   }
 }
