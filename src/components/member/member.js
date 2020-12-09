@@ -243,15 +243,8 @@ export class Member extends Component {
   }
 
   getSum() {
-    // if(this.component.classList.contains("vacation close-item") ) {
-    //     this.component.classList.remove('vacation')
-    // }
-    // console.log(this.component)
-
     const vacations = this.component.querySelectorAll(".vacation").length;
-    const vacationWeekend = this.component.querySelectorAll(".vacation.weekend")
-      .length;
-
+    const vacationWeekend = this.component.querySelectorAll(".vacation.weekend").length;
     this.sum = vacations - vacationWeekend;
   }
 }
