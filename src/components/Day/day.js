@@ -1,13 +1,7 @@
 import { Component } from "../component";
 
 export class Day extends Component {
-  constructor(
-    parentSelector,
-    tagName,
-    className,
-    dayName = " ",
-    dayNumber = " ",
-  ) {
+  constructor(parentSelector, tagName, className, dayName = " ", dayNumber = " ") {
     super(parentSelector, tagName, className);
     this.dayName = dayName;
     this.dayNumber = dayNumber;

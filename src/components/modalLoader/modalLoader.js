@@ -18,16 +18,8 @@ export class ModalLoader extends Modal {
     this.loader.component.textContent = "+";
     this.message = new Component(this.content.component, "p", "modal__message");
     this.message.component.textContent = "Waiting...";
-    this.description = new Component(
-      this.content.component,
-      "div",
-      "modal__description-wrapper",
-    );
-    this.text = new Component(
-      this.description.component,
-      "p",
-      "modal__description-text",
-    );
+    this.description = new Component(this.content.component, "div", "modal__description-wrapper");
+    this.text = new Component(this.description.component, "p", "modal__description-text");
     this.text.component.textContent = "Your request is processing";
   }
 

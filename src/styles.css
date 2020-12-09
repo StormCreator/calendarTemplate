@@ -30,8 +30,50 @@ body {
   margin: 20px auto;
 }
 .add-vacation{
-  width: 263px;
-  border: 1px solid rgb(192, 192, 192);
+  width: 144px;
+  height: 40px;
+  border-radius: 7px;
+  background-color: #48BA46;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  transition: all linear 0.2s;
+  border: none;
+  margin-right: 119px;
+  cursor: pointer;
+  color: #fff;
+
+}
+
+.add-vacation::before,
+.add-vacation::after{
+content:"";
+display: block;
+width: 13px;
+height: 1px;
+background:#fff;
+position: absolute;
+top: 50%;
+left: 16px;
+
+}
+
+.add-vacation::before{
+  transform: rotate(90deg);
+}
+
+.add-vacation:hover{
+  background-color: #59df57;
+}
+
+.add-vacation:focus{
+  border: none;
+  outline: none;
 }
 
 .outputDay {
@@ -84,13 +126,9 @@ body {
 .arrowNext,
 .arrowPrev {
     padding: 15px;
+    transition: all 0.2s;
 }
 
-.arrowNext:hover,
-.arrowPrev:hover {
-    cursor: pointer;
-    color: red;
-}
 
 .table{
     max-width: 1320px;
@@ -112,7 +150,7 @@ tbody{
 }
 .arrowNext:hover, .arrowPrev:hover {
   cursor: pointer;
-  color: red;
+  color:  #48BA46;
 }
 .modal-wrapper{
   position: fixed;

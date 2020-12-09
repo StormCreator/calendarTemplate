@@ -45,8 +45,4 @@ export class Component {
   setParent(parent) {
     this.parent = parent;
   }
-
-  getParent() {
-    console.log(this.parent);
-  }
 }
