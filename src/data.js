@@ -5,9 +5,8 @@ export const departmentTeams = {
             members: [{
                     name: "FE_Team_User1",
                     vacations: [
-                        { startDate: "19.11.2020", endDate: "22.01.2021", type: "Paid" },
-                        { startDate: "20.08.2020", endDate: "22.10.2020", type: "Paid" },
-
+                        { startDate: "19.11.2020", endDate: "22.11.2020", type: "Paid" },
+                        { startDate: "20.12.2020", endDate: "29.12.2020", type: "Paid" },
                     ],
                 },
                 {
@@ -21,8 +20,8 @@ export const departmentTeams = {
                 {
                     name: "FE_Team_User1",
                     vacations: [
-                        { startDate: "20.10.2020", endDate: "22.10.2020", type: "UnPaid" },
-                        { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
+                        { startDate: "05.09.2020", endDate: "22.09.2020", type: "UnPaid" },
+                        { startDate: "19.03.2020", endDate: "22.03.2020", type: "UnPaid" },
                     ],
                 },
             ],
@@ -33,7 +32,7 @@ export const departmentTeams = {
             members: [{
                     name: "BA_Team_User1",
                     vacations: [
-                        { startDate: "15.02.2020", endDate: "22.02.2020", type: "UnPaid" },
+                        { startDate: "15.12.2020", endDate: "22.12.2020", type: "UnPaid" },
                         { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
                     ],
                 },

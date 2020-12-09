@@ -1,11 +1,21 @@
 import { Component } from "../component";
-import { CalendarBody } from "../calendarBody";
+import { Day } from "../Day";
+import { dateFormatter } from "../../utils";
 import { departmentTeams } from "../../data";
+import { Member } from "../member"
+
 
 export class Footer extends Component {
-    constructor(parentSelector, tagName, className) {
+    constructor(parentSelector, tagName, className, currentDate) {
         super(parentSelector, tagName, className);
         this.departmentTeams = departmentTeams;
+
+        this.currentDate = currentDate;
+        this.daysInCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0, ).getDate();
+        this.fixedDayCount = 31;
+        this.showDays = [];
+        this.hideDays = [];
+
         for (let i = 0; i < departmentTeams.teams.length - 1; i++) {
             this.FooterHead = new Component(this.component, "tr", "footer__head");
             this.FooterName = new Component(this.component, "td", "footer__name");
@@ -16,10 +26,15 @@ export class Footer extends Component {
         this.FooterBlock = new Component(this.component, "div", "footer__block");
         this.FooterBlockTitle = new Component(this.component, "span", "footer__block--title");
         this.FooterBlockIcon = new Component(this.component, "i", "icon icon-001-group");
-        this.FooterBlockCount = new Component(this.component, "span", "footer__block--count");
         this.FooterBlockCountPercent = new Component(this.component, "span", "footer__block--countpercent");
+    }
 
+    setCurrentDate(date) {
+        this.currentDate = date;
+    }
 
+    setDaysInMonth(year, month) {
+        this.daysInCurrentMonth = new Date(year, month, 0).getDate();
     }
 
     render() {
@@ -27,9 +42,16 @@ export class Footer extends Component {
         this.FooterHeadRender();
         this.FooterDescrRender();
         this.FooterBlockRender();
-        this.renderDays();
-
+        this.renderDate();
+        this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
+        this.updateDayName(this.currentDate, this.showDays);
+        this.rendersumVacation();
     }
+    rendersumVacation() {
+        let itemFooter = this.component.querySelector('.footer-day');
+        let vacation = this.component.querySelectorAll('.vacation');
+    }
+
     FooterHeadRender() {
         this.component.insertAdjacentElement("beforeend", this.FooterHead.component);
         this.FooterHead.component.insertAdjacentElement("afterbegin", this.FooterName.component);
@@ -46,13 +68,11 @@ export class Footer extends Component {
         this.FooterBlock.component.insertAdjacentElement("afterbegin", this.FooterBlockTitle.component);
         this.FooterBlockTitle.component.textContent = "On vacation";
         this.FooterBlock.component.insertAdjacentElement("beforeend", this.FooterBlockIcon.component);
-        this.FooterBlock.component.insertAdjacentElement("beforeend", this.FooterBlockCount.component);
-        this.FooterBlockCount.component.textContent = "15";
+        this.FooterBlockIcon.component.textContent = "15";
         this.FooterBlock.component.insertAdjacentElement("beforeend", this.FooterBlockCountPercent.component);
         this.FooterBlockCountPercent.component.textContent = "12%";
     }
-
-    renderDays() {
+    renderDate() {
         for (let index = 1; index <= this.daysInCurrentMonth; index++) {
             const chosenDate = new Date(
                 this.currentDate.getFullYear(),
@@ -63,32 +83,21 @@ export class Footer extends Component {
                 .format(chosenDate)
                 .replace(",", "")
                 .split(" ");
-
-            const day = new Day(
-                this.component,
+            this.day = new Day(
+                this.FooterHead.component,
                 "td",
-                "outputItem headerDay",
+                "outputItem",
                 dayName.slice(0, 2),
-                index,
             );
-            day.isWeekend();
-            this.showDays.push(day);
-            day.render();
+            this.day.addClass("footer-day");
+            this.day.isWeekend();
+            this.showDays.push(this.day);
+            this.day.render();
             if (index === this.daysInCurrentMonth) {
-                new Day(this.component, "td", "outputItem headerDay", "Sum").render();
+                this.summary = new Day(this.FooterHead.component, "td", "outputItem footer-day");
+                this.summary.component.classList.add("footer-day");
+                this.summary.render();
             }
         }
-    }
-
-    updateDays(currentDate) {
-        this.setCurrentDate(currentDate);
-        this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
-        this.updateData(
-            this.fixedDayCount,
-            this.daysInCurrentMonth,
-            this.hideDays,
-            this.showDays,
-        );
-        this.updateDayName(this.currentDate, this.showDays);
     }
 }

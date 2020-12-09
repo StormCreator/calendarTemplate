@@ -2,20 +2,30 @@ import { Component } from "../component";
 import { Member } from "../member";
 import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
-import { departmentTeams } from "../../data";
 
 export class CalendarBody extends Component {
     constructor(parentSelector, tagName, className, department, currentDate, id) {
         super(parentSelector, tagName, className);
         this.id = id;
         this.department = department;
-        // this.parentSelector = parentSelector
         this.teamHead = new Component(this.component, "tr", "teamHead");
         this.teamHeadName = new Component(this.component, "td", "teamHead-name");
-        this.teamHeadIcon = new Component(this.component, "i", "icon icon-001-group");
-        this.teamHeadCountMember = new Component(this.component, "span", "teamhead-countmember");
-        this.teamHeadCount = new Component(this.component, "span", "teamhead-count");
-        this.teamHeadArrow = new Component(this.component, "i", "icon icon-chevron-down-solid");
+        this.teamHeadIcon = new Component(
+            this.component,
+            "i",
+            "icon icon-001-group",
+        );
+
+        this.teamHeadCount = new Component(
+            this.component,
+            "span",
+            "teamhead-count",
+        );
+        this.teamHeadArrow = new Component(
+            this.component,
+            "i",
+            "icon icon-chevron-down-solid",
+        );
         this.currentDate = currentDate;
         this.arrMembers = [];
         this.daysInCurrentMonth = new Date(
@@ -27,6 +37,7 @@ export class CalendarBody extends Component {
         this.showDays = [];
         this.hideDays = [];
     }
+
 
     setCurrentDate(date) {
         this.currentDate = date;
@@ -43,7 +54,6 @@ export class CalendarBody extends Component {
         this.renderHeadName();
         this.renderMembersName();
         this.renderHeadIcon();
-        this.renderHeadCountMember();
         this.renderHeadCount();
         this.renderHeadArrow();
         this.renderDays();
@@ -62,24 +72,28 @@ export class CalendarBody extends Component {
     }
 
     renderHeadIcon() {
+        this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadIcon.component);
+        this.teamHeadIcon.component.textContent = this.department.members.length;
+    }
+
+
+    renderHeadCount() {
         this.teamHeadName.component.insertAdjacentElement(
             "beforeend",
-            this.teamHeadIcon.component,
+            this.teamHeadCount.component,
         );
-    }
-    renderHeadCountMember() {
-        this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadCountMember.component);
-        this.teamHeadCountMember.component.textContent = this.department.members.length;
-
-    }
-    renderHeadCount() {
-        this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadCount.component);
         this.teamHeadCount.component.textContent = "8%";
     }
 
     renderHeadArrow() {
-        this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadArrow.component, );
-        this.teamHeadArrow.component.addEventListener("click", this.hideMember.bind(this), );
+        this.teamHeadName.component.insertAdjacentElement(
+            "beforeend",
+            this.teamHeadArrow.component,
+        );
+        this.teamHeadArrow.component.addEventListener(
+            "click",
+            this.hideMember.bind(this),
+        );
     }
 
     renderMembersName() {
@@ -92,18 +106,19 @@ export class CalendarBody extends Component {
                 this.currentDate,
             );
             this.member.render();
+
             this.arrMembers.push(this.member);
         }
     }
 
-    hideMember(e) {
+    hideMember(event) {
         for (let index = 0; index < this.arrMembers.length; index++) {
             this.arrMembers[index].toggleComponent();
         }
-        if (e.target.classList.contains("rotate-block")) {
-            e.target.classList.remove("rotate-block");
+        if (event.target.classList.contains("rotate-block")) {
+            event.target.classList.remove("rotate-block");
         } else {
-            e.target.classList.add("rotate-block");
+            event.target.classList.add("rotate-block");
         }
     }
 
@@ -132,7 +147,7 @@ export class CalendarBody extends Component {
                     this.teamHead.component,
                     "td",
                     "outputItem member-day headerDay",
-                    "Sum",
+                    " ",
                 ).render();
             }
         }
@@ -145,44 +160,66 @@ export class CalendarBody extends Component {
         }
     }
 
-    updateDayName() {
-            for (let index = 0; index < this.showDays.length; index++) {
-                const chosenDate = new Date(
-                    this.currentDate.getFullYear(),
-                    this.currentDate.getMonth(),
-                    index + 1,
-                );
-                const [dayName] = dateFormatter
-                    .format(chosenDate)
-                    .replace(",", "")
-                    .split(" ");
-                this.showDays[index].setLabelName(dayName.slice(0, 2));
-            }
-        }
-        //измнения что приняла
     updateDays(currentDate) {
-
         this.setCurrentDate(currentDate);
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
+        this.updateData(
+            this.fixedDayCount,
+            this.daysInCurrentMonth,
+            this.hideDays,
+            this.showDays,
+        );
+        this.updateDayName(this.currentDate, this.showDays);
+    }
 
-        if (this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length) {
-            const days =
-                (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
-            for (let index = 0; index < days; index++) {
-                this.showDays[this.showDays.length - 1].hideComponent();
-                this.hideDays.unshift(this.showDays[this.showDays.length - 1]);
-                this.showDays.pop();
+
+    renderDays() {
+        for (let index = 1; index <= this.daysInCurrentMonth; index++) {
+            const chosenDate = new Date(
+                this.currentDate.getFullYear(),
+                this.currentDate.getMonth(),
+                index,
+            );
+            const [dayName] = dateFormatter
+                .format(chosenDate)
+                .replace(",", "")
+                .split(" ");
+            const day = new Day(
+                this.teamHead.component,
+                "td",
+                "outputItem member-day",
+                dayName.slice(0, 2),
+            );
+            day.isWeekend();
+            this.showDays.push(day);
+            day.render();
+            if (index === this.daysInCurrentMonth) {
+                new Day(
+                    this.teamHead.component,
+                    "td",
+                    "outputItem member-day headerDay",
+                    " ",
+                ).render();
             }
-            this.updateDayName();
-        } else {
-            const days =
-                this.hideDays.length - (this.fixedDayCount % this.daysInCurrentMonth);
-            for (let index = 0; index < days; index++) {
-                this.showDays.push(this.hideDays[0]);
-                this.showDays[this.showDays.length - 1].showComponent();
-                this.hideDays.shift();
-            }
-            this.updateDayName();
         }
+    }
+
+    updateDaysMembers(currentDate) {
+        for (let index = 0; index < this.arrMembers.length; index++) {
+            this.arrMembers[index].currentDate = currentDate;
+            this.arrMembers[index].updateDays(currentDate);
+        }
+    }
+
+    updateDays(currentDate) {
+        this.setCurrentDate(currentDate);
+        this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
+        this.updateData(
+            this.fixedDayCount,
+            this.daysInCurrentMonth,
+            this.hideDays,
+            this.showDays,
+        );
+        this.updateDayName(this.currentDate, this.showDays);
     }
 }

@@ -2,7 +2,6 @@ import { MonthPicker } from "../monthPicker";
 import { Component } from "../component";
 import { CalendarHead } from "../calendarHead";
 import { CalendarBody } from "../calendarBody";
-import { departmentTeams } from "../../data";
 import { Footer } from "../Footer";
 
 export class Calendar {
@@ -37,18 +36,22 @@ export class Calendar {
             this.calendarHead,
             this.arrBody,
         );
-        this.footer = new Footer(this.table.component, "tr", "footer");
-
+        this.footer = new Footer(this.table.component, "tr", "footer", this.currentDate, this.member);
     }
 
     render() {
         this.monthPicker.render();
+        // this.calendarHead.setParent(this.table.component);
+
         this.calendarHead.render();
         this.calendarHead.prepend(
             new Component(this.calendarHead.component, "td", "add-vacation")
             .component,
         );
+        // this.addTeamBody();
         this.table.render();
         this.footer.render();
     }
+
+
 }
