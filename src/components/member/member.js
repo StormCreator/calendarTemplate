@@ -72,11 +72,14 @@ export class Member extends Component {
     
     updateDays(currentDate){
         this.vacations();
-
         this.setCurrentDate(currentDate);
+        this.getSum()
+        this.summary.setLabelName(this.sum)
         
         this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
         this.inOneMonth ()
+        
+        
         if( this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length)
         {
             let days = this.fixedDayCount % this.daysInCurrentMonth - this.hideDays.length;
@@ -87,6 +90,8 @@ export class Member extends Component {
                 this.showDays.pop();            
             }
             this.updateDayName();
+            this.getSum()
+            this.summary.setLabelName(this.sum)
             
 
         }
@@ -99,6 +104,8 @@ export class Member extends Component {
                 this.hideDays.shift();         
             }
             this.updateDayName();
+            this.getSum()
+            this.summary.setLabelName(this.sum)
 
 
         }
@@ -124,9 +131,11 @@ export class Member extends Component {
             this.inOneMonth () 
             this.day.render();
             if(i === this.daysInCurrentMonth){
-                let summary = new Day(this.component, "td", "outputItem headerDay", "Sum");
-                summary.component.classList.add("member-day");
-                summary.render();
+                this.getSum()
+                this.summary = new Day(this.component, "td", "outputItem headerDay", `${this.sum}`);
+                
+                this.summary.component.classList.add("member-day");
+                this.summary.render();
             }
         }
     }
@@ -208,6 +217,11 @@ export class Member extends Component {
 
             
         }
+    }
+    getSum(){
+        let vacations = this.component.querySelectorAll('.vacation').length;
+        let vacationWeekend =  this.component.querySelectorAll(".vacation.weekend").length;
+        this.sum = vacations-vacationWeekend;
     }
 
 }

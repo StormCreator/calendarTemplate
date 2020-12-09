@@ -107,7 +107,7 @@ export class CalendarBody extends Component {
             this.showDays.push(day); 
             day.render();
             if(i === this.daysInCurrentMonth){
-                new Day(this.teamHead.component, "td", "outputItem member-day headerDay", "Sum").render();
+                new Day(this.teamHead.component, "td", "outputItem member-day headerDay", "").render();
             }
         }
 
