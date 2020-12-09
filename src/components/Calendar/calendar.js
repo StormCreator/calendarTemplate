@@ -41,10 +41,7 @@ export class Calendar {
     this.monthPicker.render();
     // this.calendarHead.setParent(this.table.component);
     this.calendarHead.render();
-    this.calendarHead.prepend(
-      new Component(this.calendarHead.component, "td", "add-vacation")
-        .component,
-    );
+
     // this.addTeamBody();
     this.table.render();
   }
