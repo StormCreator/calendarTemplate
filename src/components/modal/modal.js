@@ -2,14 +2,7 @@ import { Component } from "../component";
 
 export class Modal extends Component {
   constructor(arguments_) {
-    const {
-      parentSelector,
-      beginDate,
-      endDate,
-      closeOnBackdrop,
-      swap,
-      selectItems,
-    } = arguments_;
+    const { parentSelector, beginDate, endDate, closeOnBackdrop, swap, selectItems } = arguments_;
     super(parentSelector, "div", "modal-wrapper modal-wrapper--hidden");
     this.beginDate = beginDate;
     this.endDate = endDate;

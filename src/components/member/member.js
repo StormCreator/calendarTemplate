@@ -9,11 +9,7 @@ export class Member extends Component {
     this.name = member.name;
     this.memberName = new Component(this.component, "td", "memberName");
     this.currentDate = currentDate;
-    this.daysInCurrentMonth = new Date(
-      this.currentDate.getFullYear(),
-      this.currentDate.getMonth() + 1,
-      0,
-    ).getDate();
+    this.daysInCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
     // this.sumName = new Component(this.component, "td", "sumName");
     this.fixedDayCount = 31;
     this.showDays = [];
@@ -30,10 +26,7 @@ export class Member extends Component {
   }
 
   renderMemberName() {
-    this.component.insertAdjacentElement(
-      "afterbegin",
-      this.memberName.component,
-    );
+    this.component.insertAdjacentElement("afterbegin", this.memberName.component);
     this.memberName.addClass("teamHead-name");
   }
 
@@ -47,15 +40,8 @@ export class Member extends Component {
 
   updateDayName() {
     for (let index = 0; index < this.showDays.length; index++) {
-      const chosenDate = new Date(
-        this.currentDate.getFullYear(),
-        this.currentDate.getMonth(),
-        index + 1,
-      );
-      const [dayName] = dateFormatter
-        .format(chosenDate)
-        .replace(",", "")
-        .split(" ");
+      const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index + 1);
+      const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
       this.showDays[index].setLabelName(dayName.slice(0, 2));
     }
   }
@@ -64,8 +50,7 @@ export class Member extends Component {
     this.setCurrentDate(currentDate);
     this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
     if (this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length) {
-      const days =
-        (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
+      const days = (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
       for (let index = 0; index < days; index++) {
         this.showDays[this.showDays.length - 1].hideComponent();
         this.hideDays.unshift(this.showDays[this.showDays.length - 1]);
@@ -73,8 +58,7 @@ export class Member extends Component {
       }
       this.updateDayName();
     } else {
-      const days =
-        this.hideDays.length - (this.fixedDayCount % this.daysInCurrentMonth);
+      const days = this.hideDays.length - (this.fixedDayCount % this.daysInCurrentMonth);
       for (let index = 0; index < days; index++) {
         this.showDays.push(this.hideDays[0]);
         this.showDays[this.showDays.length - 1].showComponent();
@@ -86,32 +70,15 @@ export class Member extends Component {
 
   renderDate() {
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
-      const chosenDate = new Date(
-        this.currentDate.getFullYear(),
-        this.currentDate.getMonth(),
-        index,
-      );
-      const [dayName] = dateFormatter
-        .format(chosenDate)
-        .replace(",", "")
-        .split(" ");
-      const day = new Day(
-        this.component,
-        "td",
-        "outputItem",
-        dayName.slice(0, 2),
-      );
+      const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index);
+      const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
+      const day = new Day(this.component, "td", "outputItem", dayName.slice(0, 2));
       day.addClass("member-day");
       day.isWeekend();
       this.showDays.push(day);
       day.render();
       if (index === this.daysInCurrentMonth) {
-        const summary = new Day(
-          this.component,
-          "td",
-          "outputItem headerDay",
-          "Sum",
-        );
+        const summary = new Day(this.component, "td", "outputItem headerDay", "Sum");
         summary.component.classList.add("member-day");
         summary.render();
       }

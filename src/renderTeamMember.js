@@ -1,11 +1,7 @@
 import { dateFormatter } from "./utils";
 
 export function renderTeamMember(team, currentDate) {
-  const daysInCurrentMonth = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth() + 1,
-    0,
-  ).getDate();
+  const daysInCurrentMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
   const teamMembers = team.members;
 
   let outputString = "";
@@ -20,15 +16,8 @@ export function renderTeamMember(team, currentDate) {
         `;
 
     for (let index = 1; index <= daysInCurrentMonth; index++) {
-      const chosenDate = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        index,
-      );
-      const [dayName, ,] = dateFormatter
-        .format(chosenDate)
-        .replace(",", "")
-        .split(" ");
+      const chosenDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), index);
+      const [dayName, ,] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
 
       outputString +=
         dayName === "Sat" || dayName === "Sun"

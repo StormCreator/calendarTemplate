@@ -71,7 +71,7 @@ export class CalendarHead extends Component {
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
       const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index);
       const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
-      let day = new Day(this.component, "td", "outputItem headerDay", dayName.slice(0, 2), index);
+      const day = new Day(this.component, "td", "outputItem headerDay", dayName.slice(0, 2), index);
       day.isWeekend();
       this.showDays.push(day);
       day.render();
@@ -93,7 +93,7 @@ export class CalendarHead extends Component {
     this.setCurrentDate(currentDate);
     this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
     if (this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length) {
-      let days = (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
+      const days = (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
       for (let index = 0; index < days; index++) {
         this.showDays[this.showDays.length - 1].hideComponent();
         this.hideDays.unshift(this.showDays[this.showDays.length - 1]);
@@ -101,7 +101,7 @@ export class CalendarHead extends Component {
       }
       this.updateDayName();
     } else {
-      let days = this.hideDays.length - (this.fixedDayCount % this.daysInCurrentMonth);
+      const days = this.hideDays.length - (this.fixedDayCount % this.daysInCurrentMonth);
       for (let index = 0; index < days; index++) {
         this.showDays.push(this.hideDays[0]);
         this.showDays[this.showDays.length - 1].showComponent();
@@ -149,10 +149,7 @@ export class CalendarHead extends Component {
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-
+      }).then((response) => response.json());
       this.modalLoader.render();
     });
   }
