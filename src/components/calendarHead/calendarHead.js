@@ -2,8 +2,6 @@ import { Component } from "../component";
 import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
 import { departmentTeams } from "../../data";
-// import { Modal } from "../modal";
-
 import { ModalLoader } from "../modalLoader";
 import { ModalError } from "../modalError";
 import { ModalForm } from "../modalForm";
@@ -81,34 +79,11 @@ export class CalendarHead extends Component {
     }
   }
 
-  updateDayName() {
-    for (let index = 0; index < this.showDays.length; index++) {
-      const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index + 1);
-      const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
-      this.showDays[index].setLabelName(dayName.slice(0, 2));
-    }
-  }
-
   updateDays(currentDate) {
     this.setCurrentDate(currentDate);
     this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
-    if (this.fixedDayCount % this.daysInCurrentMonth > this.hideDays.length) {
-      const days = (this.fixedDayCount % this.daysInCurrentMonth) - this.hideDays.length;
-      for (let index = 0; index < days; index++) {
-        this.showDays[this.showDays.length - 1].hideComponent();
-        this.hideDays.unshift(this.showDays[this.showDays.length - 1]);
-        this.showDays.pop();
-      }
-      this.updateDayName();
-    } else {
-      const days = this.hideDays.length - (this.fixedDayCount % this.daysInCurrentMonth);
-      for (let index = 0; index < days; index++) {
-        this.showDays.push(this.hideDays[0]);
-        this.showDays[this.showDays.length - 1].showComponent();
-        this.hideDays.shift();
-      }
-      this.updateDayName();
-    }
+    this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
+    this.updateDayName(this.currentDate, this.showDays);
   }
 
   renderButton() {

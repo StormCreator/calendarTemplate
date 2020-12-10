@@ -14,15 +14,11 @@ export class Day extends Component {
     this.createCurrentLabel();
     this.checkHeadClass();
     this.isVacation();
-    // this.setLabelName(this.dayName);
-    // this.setLabelNumber(this.dayNumber);
   }
 
   createCurrentLabel() {
     this.component.append(this.labelName.component);
     this.component.append(this.labelNumber.component);
-    // this.component.appendChild(this.labelName.component);
-    // this.component.appendChild(this.labelNumber.component);
   }
 
   setLabelName(dayName) {

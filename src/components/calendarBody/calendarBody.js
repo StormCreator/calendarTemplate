@@ -8,7 +8,6 @@ export class CalendarBody extends Component {
     super(parentSelector, tagName, className);
     this.id = id;
     this.department = department;
-    // this.parentSelector = parentSelector
     this.teamHead = new Component(this.component, "tr", "teamHead");
     this.teamHeadName = new Component(this.component, "td", "teamHead-name");
     this.teamHeadIcon = new Component(this.component, "i", "icon icon-001-group");
