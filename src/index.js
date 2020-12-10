@@ -1,15 +1,5 @@
-import { Calendar } from "./components/calendar";
+import { Calendar } from "./components/Calendar";
 import { departmentTeams } from "./data";
 
 const calendar = new Calendar(departmentTeams);
 calendar.render();
-
-// fetch("https://jsonplaceholder.typicode.com/posts/1", {
-//   method: "PUT",
-//   body: JSON.stringify(departmentTeams),
-//   headers: {
-//     "Content-type": "application/json; charset=UTF-8",
-//   },
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
