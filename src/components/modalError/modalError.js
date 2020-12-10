@@ -14,30 +14,14 @@ export class ModalError extends Modal {
     super(elements);
 
     this.content = new Component(this.component, "div", "modal modal--loader");
-    this.loader = new Component(
-      this.content.component,
-      "div",
-      "modal__loader modal__loader--error",
-    );
+    this.loader = new Component(this.content.component, "div", "modal__loader modal__loader--error");
     this.loader.component.textContent = "+";
     this.message = new Component(this.content.component, "p", "modal__message");
     this.message.component.textContent = "Ooops(";
-    this.description = new Component(
-      this.content.component,
-      "div",
-      "modal__description-wrapper",
-    );
-    this.text = new Component(
-      this.description.component,
-      "p",
-      "modal__description-text",
-    );
+    this.description = new Component(this.content.component, "div", "modal__description-wrapper");
+    this.text = new Component(this.description.component, "p", "modal__description-text");
     this.text.component.textContent = "It seems like you've got an error.";
-    this.tryAgain = new Component(
-      this.description.component,
-      "p",
-      "modal__description-text",
-    );
+    this.tryAgain = new Component(this.description.component, "p", "modal__description-text");
     this.tryAgain.component.textContent = "Try again later.";
   }
 

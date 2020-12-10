@@ -25,13 +25,56 @@ body {
 .outputCalendar {
     display: flex;
 }
+
 .calendar-head {
   display: flex;
-  margin: 20px auto;
+  margin: 20px auto 0 auto;
 }
 .add-vacation{
-  width: 263px;
-  border: 1px solid rgb(192, 192, 192);
+  width: 144px;
+  height: 40px;
+  border-radius: 7px;
+  background-color: #48BA46;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  transition: all linear 0.2s;
+  border: none;
+  margin-right: 119px;
+  cursor: pointer;
+  color: #fff;
+
+}
+
+.add-vacation::before,
+.add-vacation::after{
+content:"";
+display: block;
+width: 13px;
+height: 1px;
+background:#fff;
+position: absolute;
+top: 50%;
+left: 16px;
+
+}
+
+.add-vacation::before{
+  transform: rotate(90deg);
+}
+
+.add-vacation:hover{
+  background-color: #59df57;
+}
+
+.add-vacation:focus{
+  border: none;
+  outline: none;
 }
 
 .outputDay {
@@ -41,12 +84,16 @@ body {
     text-align: center;
     color: rgb(33, 33, 33);
     font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
 }
 
 .outputDate {
     text-align: center;
     color: rgb(56, 56, 56);
-    font-size: 14;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
 }
 
 .outputItem {
@@ -62,6 +109,17 @@ body {
     border-left: none;
 }
 
+.outputItem {
+    border-bottom: none;
+}
+
+.headerDay {
+    border-bottom: 1px solid rgb(192, 192, 192);
+}
+
+.outputItem:not(:last-of-type) {
+    border-bottom: 1px solid rgb(192, 192, 192);
+}
 
 .weekend {
     background: #f0f0f0;
@@ -79,32 +137,38 @@ body {
 .month {
     width: 270px;
     text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
 }
 
 .arrowNext,
 .arrowPrev {
     padding: 15px;
+    transition: all 0.2s;
 }
 
-.arrowNext:hover,
-.arrowPrev:hover {
-    cursor: pointer;
-    color: red;
-}
 
-.table{
+.table {
     max-width: 1320px;
     margin: 0 auto;
 }
 
-tbody{
+tbody {
     width: 100%;
+    
+}
+.body{
+    display: block;
+    margin-bottom: 30px;
 }
 
-.teamHead{
+.teamHead {
     width: 100%;
     display: flex;
 }
+
 .day,
 .sumName {
     width: 35px;
@@ -112,7 +176,7 @@ tbody{
 }
 .arrowNext:hover, .arrowPrev:hover {
   cursor: pointer;
-  color: red;
+  color:  #48BA46;
 }
 .modal-wrapper{
   position: fixed;
@@ -316,22 +380,53 @@ tbody{
 .teamHead-name {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 263px;
-    border: 1px solid rgb(192, 192, 192);
+    border: 1px solid rgba(126, 126, 126, 0.3);
+    border-left: 3px solid rgb(155, 153, 255);
 }
 
-.member{
+.member {
     display: flex;
+    transition: .5s all;
 }
 
-.member-day{
+.member-day {
     width: 35px;
     height: 35px;
 }
-.close-item{
+
+.close-item {
   display: none;
 }
 
+.hide-member{
+  opacity: 0;
+}
+
+.vacation{
+    /* background-color: red; */
+    /* border-right: 1px solid red; */
+    position: relative;
+
+}
+.vacation::before {
+    position: absolute;
+    width: 35px;
+    height: 25px;
+    background-color: rebeccapurple;
+    content: " ";
+    left: -1px;
+    top: 5px;
+}
 .rotate-block{
-    transform: rotate(180deg);
+    transform: rotate(-180deg);
+}
+.icon-chevron-down-solid{
+  transition: .5s all;
+  cursor: pointer;
+}
+.headerDay {
+    background: #f0f0f0;
+
 }
