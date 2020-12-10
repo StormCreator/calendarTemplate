@@ -25,7 +25,11 @@ export class Component {
   }
 
   toggleComponent() {
-    this.component.classList.toggle("close-item");
+    if(this.component.classList.contains("member")){
+      this.component.classList.toggle("hide-member");
+    }else{
+      this.component.classList.toggle("close-item");
+    }
   }
 
   showComponent() {
