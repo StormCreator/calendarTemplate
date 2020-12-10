@@ -107,7 +107,7 @@ export class CalendarBody extends Component {
         new Day(
           this.teamHead.component,
           "td",
-          "outputItem member-day headerDay",
+          "outputItem member-day headerDay borderNone",
           " ",
         ).render();
       }
