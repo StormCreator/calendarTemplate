@@ -3,14 +3,6 @@ import { Component } from "../component";
 
 export class ModalLoader extends Modal {
   constructor(arguments_) {
-    // let {
-    //     parentSelector:parentSelector,
-    //     dayFrom:beginDate,
-    //     dayTo:endDate,
-    //     closeOnBackdrop:closeOnBackdrop,
-    //     swap:swap,
-    //     selectItems:selectItems
-    // } = args;
     super(arguments_);
 
     this.content = new Component(this.component, "div", "modal modal--loader");

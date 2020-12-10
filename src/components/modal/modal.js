@@ -2,13 +2,9 @@ import { Component } from "../component";
 
 export class Modal extends Component {
   constructor(arguments_) {
-    const { parentSelector, beginDate, endDate, closeOnBackdrop, swap, selectItems } = arguments_;
+    const { parentSelector, closeOnBackdrop } = arguments_;
     super(parentSelector, "div", "modal-wrapper modal-wrapper--hidden");
-    this.beginDate = beginDate;
-    this.endDate = endDate;
-    this.selectItems = selectItems;
     this.closeOnBackdrop = closeOnBackdrop;
-    this.swap = swap;
     if (this.closeOnBackdrop === true) {
       this.component.addEventListener("click", this.hide.bind(this));
     }
