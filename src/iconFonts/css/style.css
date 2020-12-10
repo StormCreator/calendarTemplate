@@ -194,6 +194,7 @@ Generated using nucleoapp.com
 
 .icon-001-group::before {
     content: "\ea01";
+    padding-right: 3px;
 }
 
 .icon-Arrow-2::before {
@@ -203,9 +204,6 @@ Generated using nucleoapp.com
 .icon-Arrow-3::before {
     content: "\ea03";
 }
-
-
-/*стрелка нужна*/
 
 .icon-chevron-down-solid::before {
     content: "\ea04";
