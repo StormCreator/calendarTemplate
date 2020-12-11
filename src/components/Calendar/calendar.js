@@ -5,6 +5,7 @@ import { CalendarBody } from "../calendarBody";
 import { ModalLoader } from "../modalLoader";
 import { ModalError } from "../modalError";
 import { ModalForm } from "../modalForm";
+import { Footer } from "../Footer";
 
 export class Calendar {
   constructor(departmentTeams) {
@@ -40,6 +41,7 @@ export class Calendar {
       this.arrBody.push(this.calendarBody);
     }
     this.monthPicker = new MonthPicker("#app", "div", "month-picker", this.calendarHead, this.arrBody);
+    this.footer = new Footer(this.table.component, "tr", "footer", this.currentDate);
   }
 
   render() {
@@ -49,5 +51,6 @@ export class Calendar {
     this.modalError.render();
     this.modalLoader.render();
     this.modalForm.render();
+    this.footer.render();
   }
 }

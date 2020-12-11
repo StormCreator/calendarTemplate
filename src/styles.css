@@ -125,7 +125,7 @@ body {
   background: #f0f0f0;
 }
 .colorPurple.teamHead {
-  background-color: rgba(102, 51, 153, 0.2); 
+  background-color: rgba(155, 153, 255, 0.3); 
   border-left: 3px solid rgb(155, 153, 255);
 }
 .colorOrange.teamHead {
@@ -146,7 +146,7 @@ body {
 }
 
 .colorPurple.hoverCover{
-  background-color: rgba(102, 51, 153, 0.1);
+  background-color: rgba(155, 153, 255, 0.2);
   cursor: pointer;
 }
 .colorOrange.hoverCover{
@@ -488,11 +488,11 @@ tbody {
 .vacation::before {
   position: absolute;
   width: 35px;
-  height: 25px;
+  height: 24px;
   background-color: #9B99FF;
   content: " ";
   left: -1px;
-  top: 2px;
+  top: 3px;
   border-radius: 3px;
   border: 2px solid transparent;
 

@@ -45,12 +45,12 @@ export class Footer extends Component {
         this.renderDate();
         this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
         this.updateDayName(this.currentDate, this.showDays);
-        this.rendersumVacation();
+        // this.rendersumVacation();
     }
-    rendersumVacation() {
-        let itemFooter = this.component.querySelector('.footer-day');
-        let vacation = this.component.querySelectorAll('.vacation');
-    }
+    // rendersumVacation() {
+    //     let itemFooter = this.component.querySelector('.footer-day');
+    //     let vacation = this.component.querySelectorAll('.vacation');
+    // }
 
     FooterHeadRender() {
         this.component.insertAdjacentElement("beforeend", this.FooterHead.component);
@@ -100,4 +100,10 @@ export class Footer extends Component {
             }
         }
     }
+    updateDays(currentDate) {
+        this.setCurrentDate(currentDate);
+        this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
+        this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
+        this.updateDayName(this.currentDate, this.showDays);
+      }
 }
