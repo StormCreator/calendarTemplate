@@ -97,29 +97,24 @@ left: 16px;
 }
 
 .outputItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 34px;
-    padding: 8px 6px;
-    border: 1px solid rgb(192, 192, 192);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 34px;
+  padding: 8px 6px;
 }
 
-.outputItem:not(:first-of-type) {
-    border-left: none;
+.calendar-head .outputItem{
+  border-top: 1px solid rgb(192, 192, 192);
+  border-right: 1px solid rgb(192, 192, 192);
 }
 
-.outputItem {
-    border-bottom: none;
+.outputItem:first-of-type {
+  border-left: 1px solid rgb(192, 192, 192);
 }
 
-.headerDay {
-    border-bottom: 1px solid rgb(192, 192, 192);
-}
 
-.outputItem:not(:last-of-type) {
-    border-bottom: 1px solid rgb(192, 192, 192);
-}
+
 
 .weekend {
     background: #f0f0f0;
@@ -183,11 +178,13 @@ left: 16px;
 .table {
     max-width: 1320px;
     margin: 0 auto;
+    border-collapse: collapse;
 }
 
 tbody {
     width: 100%;
-    
+    border-bottom: 0px;
+
 }
 .body{
     display: block;
@@ -198,6 +195,23 @@ tbody {
     width: 100%;
     display: flex;
 }
+
+.teamHead-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 263px;
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  border-top: 0px;
+  border-left: 3px solid rgb(155, 153, 255);
+}
+
+
+.teamHead .outputItem{
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  border-left: 0px;
+}
+
 
 .day,
 .sumName {
@@ -422,10 +436,18 @@ tbody {
     transition: .5s all;
 }
 
+.member .outputItem{
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  border-left: 0px;
+  border-top: 0px;
+}
+
 .member-day {
-    width: 35px;
+    width: 34px;
     height: 35px;
 }
+
+
 
 .close-item {
   display: none;
@@ -453,6 +475,17 @@ tbody {
 .rotate-block{
     transform: rotate(-180deg);
 }
+
+.icon{
+  color: rgb(56, 56, 56);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.icon::before{
+  margin-right: 3px;
+}
+
 .icon-chevron-down-solid{
   transition: .5s all;
   cursor: pointer;

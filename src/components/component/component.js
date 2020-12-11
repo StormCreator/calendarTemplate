@@ -25,9 +25,9 @@ export class Component {
   }
 
   toggleComponent() {
-    if(this.component.classList.contains("member")){
+    if (this.component.classList.contains("member")) {
       this.component.classList.toggle("hide-member");
-    }else{
+    } else {
       this.component.classList.toggle("close-item");
     }
   }
@@ -72,15 +72,8 @@ export class Component {
 
   updateDayName(currentDate, showDays) {
     for (const [index, showDay] of showDays.entries()) {
-      const chosenDate = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        index + 1,
-      );
-      const [dayName] = dateFormatter
-        .format(chosenDate)
-        .replace(",", "")
-        .split(" ");
+      const chosenDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), index + 1);
+      const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
       showDay.setLabelName(dayName.slice(0, 2));
     }
   }

@@ -54,6 +54,7 @@ export class CalendarBody extends Component {
 
   renderHeadIcon() {
     this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadIcon.component);
+    // this.teamHeadIcon.insertTextInComponent(this.department.members.length);
   }
 
   renderHeadCount() {
@@ -87,31 +88,14 @@ export class CalendarBody extends Component {
 
   renderDays() {
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
-      const chosenDate = new Date(
-        this.currentDate.getFullYear(),
-        this.currentDate.getMonth(),
-        index,
-      );
-      const [dayName] = dateFormatter
-        .format(chosenDate)
-        .replace(",", "")
-        .split(" ");
-      const day = new Day(
-        this.teamHead.component,
-        "td",
-        "outputItem member-day",
-        dayName.slice(0, 2),
-      );
+      const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index);
+      const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
+      const day = new Day(this.teamHead.component, "td", "outputItem member-day", dayName.slice(0, 2));
       day.isWeekend();
       this.showDays.push(day);
       day.render();
       if (index === this.daysInCurrentMonth) {
-        new Day(
-          this.teamHead.component,
-          "td",
-          "outputItem member-day headerDay",
-          " ",
-        ).render();
+        new Day(this.teamHead.component, "td", "outputItem member-day headerDay", " ").render();
       }
     }
   }
@@ -126,12 +110,7 @@ export class CalendarBody extends Component {
   updateDays(currentDate) {
     this.setCurrentDate(currentDate);
     this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
-    this.updateData(
-      this.fixedDayCount,
-      this.daysInCurrentMonth,
-      this.hideDays,
-      this.showDays,
-    );
+    this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
     this.updateDayName(this.currentDate, this.showDays);
   }
   makeHover (){
