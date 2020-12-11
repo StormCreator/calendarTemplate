@@ -165,10 +165,12 @@ tbody {
 .teamHead {
   width: 100%;
   display: flex;
-  border-top: 1px solid rgb(192, 192, 192);
+  
   font-weight: 600;
 }
-
+.teamHead-name {
+  border-top: 1px solid rgb(192, 192, 192);
+}
 .teamhead-count{
   display: block;
   padding: 0 4px;
@@ -394,10 +396,15 @@ tbody {
   width: 263px;
   border: 1px solid rgba(126, 126, 126, 0.3);
   border-left: 3px solid rgb(155, 153, 255);
-  border-top: none;
+  /* border-top: none; */
   padding: 0 19px;
 }
-
+.teamHead .outputItem{
+  border-top: 1px solid rgba(126, 126, 126, 0.3);
+}
+.footer__head .outputItem{
+  border-top: 1px solid rgba(126, 126, 126, 0.3);
+}
 .member {
   display: flex;
   transition: 0.5s all;
@@ -409,7 +416,7 @@ tbody {
 }
 
 .close-item {
-  display: none;
+    display: none;
 }
 
 .hide-member {
@@ -424,6 +431,7 @@ tbody {
  
   position: relative;
 }
+
 .vacation::before {
   position: absolute;
   width: 35px;
@@ -444,7 +452,67 @@ tbody {
   transition: 0.5s all;
   cursor: pointer;
 }
-.headerDay {
-  background: #f0f0f0;
 
+.headerDay {
+    background: #f0f0f0;
+}
+
+.footer__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 220px;
+    margin-top: 18px;
+}
+
+.footer__head {
+    display: flex;
+    background-color: #F3F3F3;
+}
+
+.footer__name {
+    width: 263px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #e2e2e2;
+}
+
+.footer__block--countpercent {
+    background-color: #48BA46;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    width: 42px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 40px;
+    text-align: left;
+    margin-right: auto;
+}
+
+.footer-day {
+    width: 35px;
+    height: 35px;
+}
+
+.footer-day .weekend {
+    background-color: #F0F0F0;
+    
+}
+
+.footer__descr {
+    margin-top: 29px;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 12px;
+    width: 232px;
 }
