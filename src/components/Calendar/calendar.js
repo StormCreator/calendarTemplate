@@ -34,7 +34,7 @@ export class Calendar {
     });
     this.calendarHead = new CalendarHead(this.table.component, "thead", "calendar-head", this.currentDate, this.modalForm, this.modalError, this.modalLoader);
     this.arrBody = [];
-    this.color = ["colorPurple", "colorOrange"];
+    this.color = ["colorPurple", "colorOrange", "colorPurple","colorOrange"];
     for (let index = 0; index < departmentTeams.teams.length; index++) {
       this.calendarBody = new CalendarBody(this.table.component, "tbody", "body", departmentTeams.teams[index], this.currentDate, `id-${index}`, this.color[index]);
       this.calendarBody.render();
@@ -42,6 +42,7 @@ export class Calendar {
     }
     this.monthPicker = new MonthPicker("#app", "div", "month-picker", this.calendarHead, this.arrBody);
     this.footer = new Footer(this.table.component, "tr", "footer", this.currentDate);
+    this.monthPicker.setFooterComponent(this.footer);
   }
 
   render() {

@@ -50,5 +50,10 @@ export class MonthPicker extends Component {
       this.arrBody[index].updateDays(this.currentDate);
       this.arrBody[index].updateDaysMembers(this.currentDate);
     }
+    this.footer.updateFooterDays(this.currentDate);
+  }
+
+  setFooterComponent(footer) {
+    this.footer = footer;
   }
 }
