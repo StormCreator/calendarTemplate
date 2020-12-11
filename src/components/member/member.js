@@ -88,7 +88,7 @@ export class Member extends Component {
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
       const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index);
       const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
-      this.day = new Day(this.component, "td", "outputItem", dayName.slice(0, 2));
+      this.day = new Day(this.component, "td", "outputItem", dayName.slice(0, 2), " ", this.color);
       this.getSum();
       this.day.addClass("member-day");
       this.day.isWeekend();
