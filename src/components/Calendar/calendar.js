@@ -9,7 +9,7 @@ export class Calendar {
     this.table = new Component("#app", "table", "table");
     this.calendarHead = new CalendarHead(this.table.component, "thead", "calendar-head", this.currentDate);
     this.arrBody = [];
-    this.color = ['colorPurple','colorOrange']
+    this.color = ["colorPurple", "colorOrange"];
     for (let index = 0; index < departmentTeams.teams.length; index++) {
       this.calendarBody = new CalendarBody(this.table.component, "tbody", "body", departmentTeams.teams[index], this.currentDate, `id-${index}`, this.color[index]);
       this.calendarBody.render();

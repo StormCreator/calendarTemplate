@@ -40,7 +40,7 @@ export class CalendarBody extends Component {
     this.renderHeadCount();
     this.renderHeadArrow();
     this.renderDays();
-    this.makeHover ();
+    this.makeHover();
   }
 
   renderHead() {
@@ -69,7 +69,7 @@ export class CalendarBody extends Component {
 
   renderMembersName() {
     for (let index = 0; index < this.department.members.length; index++) {
-      this.member = new Member(this.component, "tr", `member ${this.color}`, this.department.members[index], this.currentDate,this.color);
+      this.member = new Member(this.component, "tr", `member ${this.color}`, this.department.members[index], this.currentDate, this.color);
       this.member.render();
       this.arrMembers.push(this.member);
     }
@@ -113,17 +113,15 @@ export class CalendarBody extends Component {
     this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
     this.updateDayName(this.currentDate, this.showDays);
   }
-  makeHover (){
-    console.log(this.arrMembers)
-    for(let i=0; i<this.arrMembers.length; i++){
-      this.arrMembers[i].component.addEventListener('mouseover', ()=> { 
-      this.arrMembers[i].component.classList.add(`hoverCover`)
-      console.log(this.arrMembers[i].color)
 
-      })
-      this.arrMembers[i].component.addEventListener('mouseout', ()=> { 
-      this.arrMembers[i].component.classList.remove(`hoverCover`)
-    })
+  makeHover() {
+    for (let index = 0; index < this.arrMembers.length; index++) {
+      this.arrMembers[index].component.addEventListener("mouseover", () => {
+        this.arrMembers[index].component.classList.add(`hoverCover`);
+      });
+      this.arrMembers[index].component.addEventListener("mouseout", () => {
+        this.arrMembers[index].component.classList.remove(`hoverCover`);
+      });
     }
   }
 }

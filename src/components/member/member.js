@@ -3,7 +3,7 @@ import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
 
 export class Member extends Component {
-  constructor(parentSelector, tagName, className, member, currentDate,color) {
+  constructor(parentSelector, tagName, className, member, currentDate, color) {
     super(parentSelector, tagName, className);
     this.member = member;
     this.name = member.name;
@@ -24,8 +24,6 @@ export class Member extends Component {
     this.renderMemberName();
 
     this.renderDate();
-    // this.getAllInDay();
-
   }
 
   renderMemberName() {
@@ -177,19 +175,4 @@ export class Member extends Component {
     const vacationWeekend = this.component.querySelectorAll(".vacation.weekend").length;
     this.sum = vacations - vacationWeekend;
   }
-
-//   getAllInDay (){
-//     this. arrVacationInDay = [];
-//     // console.log(this.showDays)
-//     for(let i = 0; i<this.showDays.length; i++){
-
-
-//           if(this.showDays[i].vacation === true && this.showDays[i].weekend === false){
-//             this.arrVacationInDay.push(i+1)
-            
-//           }
-//     }
-// // console.log(this.arrVacationInDay)
-
-//   }
 }

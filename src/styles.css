@@ -113,9 +113,6 @@ left: 16px;
   border-left: 1px solid rgb(192, 192, 192);
 }
 
-
-
-
 .weekend {
     background: #f0f0f0;
 }
@@ -148,7 +145,6 @@ left: 16px;
   background-color: rgba(255, 167, 104, 0.2);
  cursor: pointer;
 }  
-/* ..... */
 
 .month-picker {
     margin-top: 20px;
@@ -424,7 +420,7 @@ tbody {
     align-items: center;
     width: 263px;
     border: 1px solid rgba(126, 126, 126, 0.3);
-    /* border-left: 3px solid rgb(155, 153, 255); */
+    padding: 5px 15px;
 }
 
 
@@ -443,6 +439,9 @@ tbody {
     width: 34px;
     height: 35px;
 }
+.memberName {
+  padding: 5px 15px;
+}
 
 
 
@@ -455,8 +454,6 @@ tbody {
 }
 
 .vacation{
-    /* background-color: red; */
-    /* border-right: 1px solid red; */
     position: relative;
 
 }
@@ -464,7 +461,6 @@ tbody {
     position: absolute;
     width: 35px;
     height: 25px;
-    /* background-color: rebeccapurple; */
     content: " ";
     left: -1px;
     top: 5px;

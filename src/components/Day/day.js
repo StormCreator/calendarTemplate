@@ -1,7 +1,7 @@
 import { Component } from "../component";
 
 export class Day extends Component {
-  constructor(parentSelector, tagName, className, dayName = " ", dayNumber = " ", color ) {
+  constructor(parentSelector, tagName, className, dayName = " ", dayNumber = " ", color) {
     super(parentSelector, tagName, className);
     this.dayName = dayName;
     this.dayNumber = dayNumber;
@@ -13,12 +13,10 @@ export class Day extends Component {
   }
 
   render() {
-    console.log(this.color)
     super.render();
     this.createCurrentLabel();
     this.checkHeadClass();
     this.isVacation();
-    
   }
 
   createCurrentLabel() {
