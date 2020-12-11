@@ -4,11 +4,12 @@ import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
 
 export class CalendarBody extends Component {
-  constructor(parentSelector, tagName, className, department, currentDate, id) {
+  constructor(parentSelector, tagName, className, department, currentDate, id, color) {
     super(parentSelector, tagName, className);
     this.id = id;
+    this.color = color;
     this.department = department;
-    this.teamHead = new Component(this.component, "tr", "teamHead");
+    this.teamHead = new Component(this.component, "tr", `teamHead ${this.color}`);
     this.teamHeadName = new Component(this.component, "td", "teamHead-name");
     this.teamHeadIcon = new Component(this.component, "i", "icon icon-001-group");
     this.teamHeadCount = new Component(this.component, "span", "teamhead-count");
@@ -39,6 +40,7 @@ export class CalendarBody extends Component {
     this.renderHeadCount();
     this.renderHeadArrow();
     this.renderDays();
+    this.makeHover ();
   }
 
   renderHead() {
@@ -66,7 +68,7 @@ export class CalendarBody extends Component {
 
   renderMembersName() {
     for (let index = 0; index < this.department.members.length; index++) {
-      this.member = new Member(this.component, "tr", "member", this.department.members[index], this.currentDate);
+      this.member = new Member(this.component, "tr", `member ${this.color}`, this.department.members[index], this.currentDate,this.color);
       this.member.render();
       this.arrMembers.push(this.member);
     }
@@ -131,5 +133,18 @@ export class CalendarBody extends Component {
       this.showDays,
     );
     this.updateDayName(this.currentDate, this.showDays);
+  }
+  makeHover (){
+    console.log(this.arrMembers)
+    for(let i=0; i<this.arrMembers.length; i++){
+      this.arrMembers[i].component.addEventListener('mouseover', ()=> { 
+      this.arrMembers[i].component.classList.add(`hoverCover`)
+      console.log(this.arrMembers[i].color)
+
+      })
+      this.arrMembers[i].component.addEventListener('mouseout', ()=> { 
+      this.arrMembers[i].component.classList.remove(`hoverCover`)
+    })
+    }
   }
 }

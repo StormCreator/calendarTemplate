@@ -3,12 +3,13 @@ import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
 
 export class Member extends Component {
-  constructor(parentSelector, tagName, className, member, currentDate) {
+  constructor(parentSelector, tagName, className, member, currentDate,color) {
     super(parentSelector, tagName, className);
     this.member = member;
     this.name = member.name;
+    this.color = color;
     this.vocation = this.member.vacations;
-    this.memberName = new Component(this.component, "td", "memberName");
+    this.memberName = new Component(this.component, "td", `memberName ${this.color}`);
     this.currentDate = currentDate;
     this.daysInCurrentMonth = new Date(
       this.currentDate.getFullYear(),
@@ -27,6 +28,8 @@ export class Member extends Component {
     this.renderMemberName();
 
     this.renderDate();
+    // this.getAllInDay();
+
   }
 
   renderMemberName() {
@@ -115,6 +118,8 @@ export class Member extends Component {
         "td",
         "outputItem",
         dayName.slice(0, 2),
+        " ",
+        `${this.color}`
       );
       this.getSum();
       this.day.addClass("member-day");
@@ -127,7 +132,7 @@ export class Member extends Component {
           this.component,
           "td",
           "outputItem headerDay",
-          `${this.sum}`,
+          `${this.sum}`
         );
 
         this.summary.component.classList.add("member-day");
@@ -247,4 +252,19 @@ export class Member extends Component {
     const vacationWeekend = this.component.querySelectorAll(".vacation.weekend").length;
     this.sum = vacations - vacationWeekend;
   }
+
+//   getAllInDay (){
+//     this. arrVacationInDay = [];
+//     // console.log(this.showDays)
+//     for(let i = 0; i<this.showDays.length; i++){
+
+
+//           if(this.showDays[i].vacation === true && this.showDays[i].weekend === false){
+//             this.arrVacationInDay.push(i+1)
+            
+//           }
+//     }
+// // console.log(this.arrVacationInDay)
+
+//   }
 }

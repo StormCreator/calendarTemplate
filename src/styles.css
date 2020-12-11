@@ -124,8 +124,38 @@ left: 16px;
 .weekend {
     background: #f0f0f0;
 }
+.transparent {
+  background-color: transparent;
+}
+.colorPurple.teamHead {
+  background-color: rgba(102, 51, 153, 0.2); 
+  border-left: 3px solid rgb(155, 153, 255);
+}
+.colorOrange.teamHead {
+  background-color: rgba(255, 167, 104, 0.3);
+  border-left: 3px solid rgb(255, 167, 104);
+}
+.colorPurple.vacation::before{
+  background-color: rebeccapurple;
+}
+.colorOrange.vacation::before{
+  background-color:rgb(255, 167, 104);
+}
+.colorPurple.member {
+  border-left: 3px solid rgb(155, 153, 255);
+}
+.colorOrange.member {
+  border-left: 3px solid rgb(255, 167, 104);
+}
 
-
+.colorPurple.hoverCover{
+  background-color: rgba(102, 51, 153, 0.2);
+  cursor: pointer;
+}
+.colorOrange.hoverCover{
+  background-color: rgba(255, 167, 104, 0.3);
+ cursor: pointer;
+}  
 /* ..... */
 
 .month-picker {
@@ -383,8 +413,9 @@ tbody {
     align-items: center;
     width: 263px;
     border: 1px solid rgba(126, 126, 126, 0.3);
-    border-left: 3px solid rgb(155, 153, 255);
+    /* border-left: 3px solid rgb(155, 153, 255); */
 }
+
 
 .member {
     display: flex;
@@ -414,7 +445,7 @@ tbody {
     position: absolute;
     width: 35px;
     height: 25px;
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
     content: " ";
     left: -1px;
     top: 5px;

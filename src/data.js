@@ -7,7 +7,7 @@ export const departmentTeams = {
         {
           name: "FE_Team_User1",
           vacations: [
-            { startDate: "20.12.2020", endDate: "22.12.2020", type: "Paid" },
+            { startDate: "08.08.2020", endDate: "22.12.2020", type: "Paid" },
             { startDate: "20.11.2020", endDate: "22.11.2020", type: "Paid" },
           ],
         },
