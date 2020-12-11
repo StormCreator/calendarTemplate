@@ -126,7 +126,7 @@ export class Member extends Component {
         this.summary = new Day(
           this.component,
           "td",
-          "outputItem headerDay",
+          "outputItem headerDay borderNone",
           `${this.sum}`,
         );
 
