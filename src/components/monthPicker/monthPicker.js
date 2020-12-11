@@ -8,16 +8,8 @@ export class MonthPicker extends Component {
     this.calendarHead = calendarHead;
     this.arrBody = arrayBody;
     this.label = new Component(this.component, "h1", "month");
-    this.arrowPrev = new Component(
-      this.component,
-      "i",
-      "arrowPrev icon icon-Arrow-2",
-    );
-    this.arrowNext = new Component(
-      this.component,
-      "i",
-      "arrowNext icon icon-Arrow-3",
-    );
+    this.arrowPrev = new Component(this.component, "i", "arrowPrev icon icon-Arrow-2");
+    this.arrowNext = new Component(this.component, "i", "arrowNext icon icon-Arrow-3");
   }
 
   render() {
@@ -51,12 +43,17 @@ export class MonthPicker extends Component {
   }
 
   changeMonth(date) {
-    this.currentDate = date
+    this.currentDate = date;
     this.updateCurrentLabel(this.currentDate);
     this.calendarHead.updateDays(this.currentDate);
     for (let index = 0; index < this.arrBody.length; index++) {
       this.arrBody[index].updateDays(this.currentDate);
       this.arrBody[index].updateDaysMembers(this.currentDate);
     }
+    this.footer.updateFooterDays(this.currentDate);
+  }
+
+  setFooterComponent(footer) {
+    this.footer = footer;
   }
 }
