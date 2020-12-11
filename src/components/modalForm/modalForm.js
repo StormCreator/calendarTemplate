@@ -3,9 +3,9 @@ import { Component } from "../component";
 
 export class ModalForm extends Modal {
   constructor(arguments_) {
-    const { parentSelector, dayFrom: beginDate, dayTo: endDate, closeOnBackdrop, swap, selectItems, options, loadingHandler, errorHandler } = arguments_;
-    super(arguments_);
-
+    const { parentSelector, dayFrom: beginDate, dayTo: endDate, closeOnBackdrop, swap, options, modalLoader, modalError } = arguments_;
+    super({ parentSelector, closeOnBackdrop });
+    this.swap = swap;
     this.content = new Component(this.component, "div", "modal");
     this.heading = new Component(this.content.component, "div", "modal__head");
     this.title = new Component(this.heading.component, "p", "modal__title");
@@ -37,8 +37,8 @@ export class ModalForm extends Modal {
     this.buttonClose.component.textContent = "Close";
     this.buttonSend = new Component(this.buttonWrapper.component, "button", "modal__send");
     this.buttonSend.component.textContent = "Send";
-    this.loadingHandler = loadingHandler;
-    this.errorHandler = errorHandler;
+    this.loadingHandler = modalLoader;
+    this.errorHandler = modalError;
   }
 
   render() {
@@ -81,8 +81,12 @@ export class ModalForm extends Modal {
     const temporary2 = Date.parse(this.to.component.value);
     this.dateDifference = Math.floor((temporary2 - temporary1) / (24 * 60 * 60 * 1000));
     if (this.dateDifference < 0) {
-      this.swapDates();
-      this.countDifference();
+      if (this.swap === true) {
+        this.swapDates();
+        this.countDifference();
+      } else {
+        this.dateDifference *= -1;
+      }
     }
     this.daysCount.component.textContent = `${this.dateDifference} days`;
   }
@@ -91,8 +95,18 @@ export class ModalForm extends Modal {
     super.hide();
   }
 
-  show() {
+  show(date = new Date()) {
     super.show();
+    this.from.component.value = date.toISOString().slice(0, 10);
+    this.countDifference();
+  }
+
+  changeOptions(array) {
+    this.types.component.innerHTML = "";
+    array.forEach((element) => {
+      const newOption = new Option(element, element);
+      this.types.component.append(newOption);
+    });
   }
 
   send() {

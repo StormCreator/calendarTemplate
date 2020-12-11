@@ -2,12 +2,9 @@ import { Component } from "../component";
 import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
 import { departmentTeams } from "../../data";
-import { ModalLoader } from "../modalLoader";
-import { ModalError } from "../modalError";
-import { ModalForm } from "../modalForm";
 
 export class CalendarHead extends Component {
-  constructor(parentSelector, tagName, className, currentDate) {
+  constructor(parentSelector, tagName, className, currentDate, modalForm, modalError, modalLoader) {
     super(parentSelector, tagName, className);
     this.currentDate = currentDate;
     this.daysInCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
@@ -17,37 +14,11 @@ export class CalendarHead extends Component {
     this.button = new Component(this.component, "button", "add-vacation");
     this.button.component.textContent = "Add Vacation";
 
-    this.modalLoader = new ModalLoader({
-      parentSelector: "#app",
-      dayFrom: new Date(),
-      dayTo: new Date(),
-      closeOnBackdrop: false,
-      swap: false,
-      selectItems: departmentTeams.teams[0].members,
-      options: departmentTeams.options,
-    });
+    this.modalLoader = modalLoader;
 
-    this.modalError = new ModalError({
-      parentSelector: "#app",
-      dayFrom: new Date(),
-      dayTo: new Date(),
-      closeOnBackdrop: false,
-      swap: false,
-      selectItems: departmentTeams.teams[0].members,
-      options: departmentTeams.options,
-    });
+    this.modalError = modalError;
 
-    this.modalForm = new ModalForm({
-      parentSelector: "#app",
-      dayFrom: new Date(),
-      dayTo: new Date(),
-      closeOnBackdrop: false,
-      swap: false,
-      selectItems: departmentTeams.teams[0].members,
-      options: departmentTeams.options,
-      loadingHandler: this.modalLoader,
-      errorHandler: this.modalError,
-    });
+    this.modalForm = modalForm;
   }
 
   setCurrentDate(date) {
@@ -102,30 +73,10 @@ export class CalendarHead extends Component {
         .then((json) => {
           setTimeout(() => {
             this.modalLoader.hide();
-            this.modal = new ModalForm({
-              parentSelector: "#app",
-              dayFrom: new Date(),
-              dayTo: new Date(2020, 11, 12),
-              closeOnBackdrop: true,
-              swap: true,
-              selectItems: json.teams[0].members,
-              options: json.options,
-              loadingHandler: this.modalLoader,
-              errorHandler: this.modalError,
-            });
-            this.modal.render();
-            this.modal.show();
+            this.modalForm.changeOptions(json.options);
+            this.modalForm.show(new Date());
           }, 2000);
         });
-
-      fetch("https://jsonplaceholder.typicode.com/posts/1", {
-        method: "PUT",
-        body: JSON.stringify(departmentTeams),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }).then((response) => response.json());
-      this.modalLoader.render();
     });
   }
 }
