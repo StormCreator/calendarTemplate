@@ -45,7 +45,7 @@ body {
   padding-left: 20px;
   transition: all linear 0.2s;
   border: none;
-  margin-right: 119px;
+  margin-right: 122px;
   cursor: pointer;
   color: #fff;
 }
@@ -124,8 +124,35 @@ body {
 .weekend {
   background: #f0f0f0;
 }
+.colorPurple.teamHead {
+  background-color: rgba(155, 153, 255, 0.3); 
+  border-left: 3px solid rgb(155, 153, 255);
+}
+.colorOrange.teamHead {
+  background-color: rgba(255, 167, 104, 0.3);
+  border-left: 3px solid rgb(255, 167, 104);
+}
+.colorPurple.vacation::before{
+  background-color: rgb(155, 153, 255);
+}
+.colorOrange.vacation::before{
+  background-color:rgb(255, 167, 104);
+}
+.colorPurple.member {
+  border-left: 3px solid rgb(155, 153, 255);
+}
+.colorOrange.member {
+  border-left: 3px solid rgb(255, 167, 104);
+}
 
-/* ..... */
+.colorPurple.hoverCover{
+  background-color: rgba(155, 153, 255, 0.2);
+  cursor: pointer;
+}
+.colorOrange.hoverCover{
+  background-color: rgba(255, 167, 104, 0.2);
+ cursor: pointer;
+}  
 
 .month-picker {
   margin-top: 20px;
@@ -179,6 +206,23 @@ tbody {
   color: #fff;
   font-size: 12px;
 }
+
+.teamHead-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 263px;
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  border-top: 0px;
+  border-left: 3px solid rgb(155, 153, 255);
+}
+
+
+.teamHead .outputItem{
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  border-left: 0px;
+}
+
 
 .day,
 .sumName {
@@ -395,8 +439,6 @@ tbody {
   align-items: center;
   width: 263px;
   border: 1px solid rgba(126, 126, 126, 0.3);
-  border-left: 3px solid rgb(155, 153, 255);
-  /* border-top: none; */
   padding: 0 19px;
 }
 .teamHead .outputItem{
@@ -410,10 +452,21 @@ tbody {
   transition: 0.5s all;
 }
 
+.member .outputItem{
+  border: 1px solid rgba(126, 126, 126, 0.3);
+  border-left: 0px;
+  border-top: 0px;
+}
+
 .member-day {
   width: 35px;
   height: 35px;
 }
+.memberName {
+  padding: 5px 15px;
+}
+
+
 
 .close-item {
     display: none;
@@ -435,13 +488,13 @@ tbody {
 .vacation::before {
   position: absolute;
   width: 35px;
-  height: 25px;
+  height: 24px;
   background-color: #9B99FF;
   content: " ";
   left: -1px;
-  top: 2px;
+  top: 3px;
   border-radius: 3px;
-  border: 2px solid #9B99FF;
+  border: 2px solid transparent;
 
 }
 

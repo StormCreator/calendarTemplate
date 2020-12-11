@@ -1,10 +1,13 @@
 import { Component } from "../component";
 
 export class Day extends Component {
-  constructor(parentSelector, tagName, className, dayName = " ", dayNumber = " ") {
+  constructor(parentSelector, tagName, className, dayName = " ", dayNumber = " ", color) {
     super(parentSelector, tagName, className);
     this.dayName = dayName;
     this.dayNumber = dayNumber;
+    this.weekend = false;
+    this.vacation = false;
+    this.color = color;
     this.labelName = new Component(this.component, "span", "outputDay");
     this.labelNumber = new Component(this.component, "span", "outputDate");
   }
@@ -50,14 +53,18 @@ export class Day extends Component {
   isWeekend() {
     if (this.dayName === "Sa" || this.dayName === "Su") {
       this.component.classList.add("weekend");
+      this.weekend = true;
     }
   }
 
   isVacation() {
     if (this.vacation) {
-      this.component.classList.add("vacation");
+      this.component.classList.add(`vacation`);
+      this.component.classList.add(`${this.color}`);
+      this.vacation = true;
     } else {
-      this.component.classList.remove("vacation");
+      this.component.classList.remove(`vacation`);
+      this.component.classList.remove(`${this.color}`);
     }
   }
 

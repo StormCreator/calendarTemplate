@@ -13,7 +13,6 @@ export class Component {
 
   render() {
     this.parent.append(this.component);
-    // return this.component;
   }
 
   getComponent() {

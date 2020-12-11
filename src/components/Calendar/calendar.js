@@ -34,8 +34,9 @@ export class Calendar {
     });
     this.calendarHead = new CalendarHead(this.table.component, "thead", "calendar-head", this.currentDate, this.modalForm, this.modalError, this.modalLoader);
     this.arrBody = [];
+    this.color = ["colorPurple", "colorOrange", "colorPurple","colorOrange"];
     for (let index = 0; index < departmentTeams.teams.length; index++) {
-      this.calendarBody = new CalendarBody(this.table.component, "tbody", "body", departmentTeams.teams[index], this.currentDate, `id-${index}`);
+      this.calendarBody = new CalendarBody(this.table.component, "tbody", "body", departmentTeams.teams[index], this.currentDate, `id-${index}`, this.color[index]);
       this.calendarBody.render();
       this.arrBody.push(this.calendarBody);
     }

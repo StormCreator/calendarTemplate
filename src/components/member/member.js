@@ -3,12 +3,13 @@ import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
 
 export class Member extends Component {
-  constructor(parentSelector, tagName, className, member, currentDate) {
+  constructor(parentSelector, tagName, className, member, currentDate, color) {
     super(parentSelector, tagName, className);
     this.member = member;
     this.name = member.name;
+    this.color = color;
     this.vocation = this.member.vacations;
-    this.memberName = new Component(this.component, "td", "memberName");
+    this.memberName = new Component(this.component, "td", `memberName ${this.color}`);
     this.currentDate = currentDate;
     this.daysInCurrentMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
     this.fixedDayCount = 31;
@@ -85,7 +86,7 @@ export class Member extends Component {
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
       const chosenDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), index);
       const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
-      this.day = new Day(this.component, "td", "outputItem", dayName.slice(0, 2));
+      this.day = new Day(this.component, "td", "outputItem", dayName.slice(0, 2), " ", this.color);
       this.getSum();
       this.day.addClass("member-day");
       this.day.isWeekend();
@@ -93,7 +94,7 @@ export class Member extends Component {
       this.inOneMonth();
       this.day.render();
       if (index === this.daysInCurrentMonth) {
-        this.summary = new Day(this.component, "td", "outputItem headerDay borderNone", `${this.sum}`);
+        this.summary = new Day(this.component, "td", "outputItem headerDay", `${this.sum}`);
 
         this.summary.component.classList.add("member-day");
         this.summary.render();

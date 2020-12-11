@@ -4,11 +4,12 @@ import { Day } from "../Day";
 import { dateFormatter } from "../../utils";
 
 export class CalendarBody extends Component {
-  constructor(parentSelector, tagName, className, department, currentDate, id) {
+  constructor(parentSelector, tagName, className, department, currentDate, id, color) {
     super(parentSelector, tagName, className);
     this.id = id;
+    this.color = color;
     this.department = department;
-    this.teamHead = new Component(this.component, "tr", "teamHead");
+    this.teamHead = new Component(this.component, "tr", `teamHead ${this.color}`);
     this.teamHeadName = new Component(this.component, "td", "teamHead-name");
     this.teamHeadIcon = new Component(this.component, "i", "icon icon-001-group");
     this.teamHeadCount = new Component(this.component, "span", "teamhead-count");
@@ -39,6 +40,7 @@ export class CalendarBody extends Component {
     this.renderHeadCount();
     this.renderHeadArrow();
     this.renderDays();
+    this.makeHover();
   }
 
   renderHead() {
@@ -50,12 +52,9 @@ export class CalendarBody extends Component {
     this.teamHeadName.component.textContent = this.department.name;
   }
 
-  // renderHeadIcon() {
-  //     this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadIcon.component);
-  // }
   renderHeadIcon() {
     this.teamHeadName.component.insertAdjacentElement("beforeend", this.teamHeadIcon.component);
-    this.teamHeadIcon.component.textContent = this.department.members.length;
+    // this.teamHeadIcon.insertTextInComponent(this.department.members.length);
   }
 
   renderHeadCount() {
@@ -70,7 +69,7 @@ export class CalendarBody extends Component {
 
   renderMembersName() {
     for (let index = 0; index < this.department.members.length; index++) {
-      this.member = new Member(this.component, "tr", "member", this.department.members[index], this.currentDate);
+      this.member = new Member(this.component, "tr", `member ${this.color}`, this.department.members[index], this.currentDate, this.color);
       this.member.render();
       this.arrMembers.push(this.member);
     }
@@ -113,5 +112,16 @@ export class CalendarBody extends Component {
     this.setDaysInMonth(currentDate.getFullYear(), currentDate.getMonth() + 1);
     this.updateData(this.fixedDayCount, this.daysInCurrentMonth, this.hideDays, this.showDays);
     this.updateDayName(this.currentDate, this.showDays);
+  }
+
+  makeHover() {
+    for (let index = 0; index < this.arrMembers.length; index++) {
+      this.arrMembers[index].component.addEventListener("mouseover", () => {
+        this.arrMembers[index].component.classList.add(`hoverCover`);
+      });
+      this.arrMembers[index].component.addEventListener("mouseout", () => {
+        this.arrMembers[index].component.classList.remove(`hoverCover`);
+      });
+    }
   }
 }
