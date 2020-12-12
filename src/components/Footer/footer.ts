@@ -33,7 +33,7 @@ export class Footer extends Component {
   
 
         for (let i = 0; i < departmentTeams.teams.length - 1; i++) {
-            this.FooterHead = new Component(this.component, "tr", "footer__head");
+            this.FooterHead:= new Component(this.component, "tr", "footer__head");
             this.FooterName = new Component(this.component, "td", "footer__name");
             this.FooterHead.component.insertAdjacentElement("afterbegin", this.FooterName.component);
             this.FooterName.component.textContent = "Day-Person-Starts";
